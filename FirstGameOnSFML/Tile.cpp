@@ -11,8 +11,9 @@ public:
 	float y;
 	float size;
 
-	RectangleShape rect;
-
+	RectangleShape Rect;
+	Sprite backSprite;
+	Sprite frontSprite;
 	
 
 	Tile() 
@@ -26,10 +27,12 @@ public:
 		x = X;
 		y = Y;
 		size = Size;
-		rect.setSize(Vector2f(size, size));
-		rect.setOutlineThickness(1.f);
-		rect.setOutlineColor(Color(200, 200, 200));
-		rect.setPosition(x, y);
+		Rect.setSize(Vector2f(size, size));
+		Rect.setPosition(x, y);
+
+		frontSprite.setPosition(x, y);
+		backSprite.setPosition(x, y);
+
 	};
 
 };

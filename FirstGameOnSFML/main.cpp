@@ -9,11 +9,18 @@ using namespace std;
 const int WIDTH = 900;
 const int HEIGHT = 600;
 
-
+bool checkCollision(Vector2i obj1, int obj1Size, Vector2i obj2, int obj2Size) 
+{
+	if (obj1.x < obj2.x + obj2Size && obj1.y < obj2.y + obj2Size && obj1.x + obj1Size > obj2.x && obj1.y + obj1Size > obj2.y)
+		return true;
+	else
+		return false;
+}
 
 int main()
 {
 	int px = 0, py = 0;
+	bool gizmo = false;
 
 	Clock clock;
 
@@ -25,6 +32,15 @@ int main()
 
 	GameMap map(WIDTH, HEIGHT, 50);
 
+	Mouse mouse;
+	int mouseX = 0, mouseY = 0;
+
+
+	Texture backTexture;
+	Texture frontTexture;
+	backTexture.loadFromFile("Images\\Tile1.png");
+	frontTexture.loadFromFile("Images\\Hero.png");
+
 	while (window.isOpen())
 	{
 
@@ -32,7 +48,6 @@ int main()
 		clock.restart();
 		time = time / 800;
 
-		cout << time << endl;
 
 		Event event;
 		while (window.pollEvent(event))
@@ -41,6 +56,11 @@ int main()
 			{
 				window.close();
 				return 0;
+			}
+			if (event.type == Event::MouseMoved)
+			{
+				mouseX = event.mouseMove.x;
+				mouseY = event.mouseMove.y;
 			}
 			if (event.type == Event::KeyPressed)
 			{
@@ -64,6 +84,8 @@ int main()
 					if (py != 11)
 						py += 1;
 				}
+				else if (event.key.code == Keyboard::G)
+					gizmo = !gizmo;
 			}
 		}
 		window.clear(Color(25, 25, 25, 0));
@@ -72,11 +94,29 @@ int main()
 		{
 			for (int j = 0; j < CELLS_COUNT_Y; j++)
 			{
-				window.draw(map.cells[i][j].rect);
-				map.cells[i][j].rect.setFillColor(Color(255, 255, 255));
+				if (gizmo)
+				{
+					window.draw(map.cells[i][j].Rect);
+					map.cells[i][j].Rect.setOutlineColor(Color(200, 200, 200));
+					map.cells[i][j].Rect.setOutlineThickness(0.6f);
+					if (checkCollision(Vector2i(map.cells[i][j].x, map.cells[i][j].y), map.cells[i][j].size, Vector2i(mouseX, mouseY), 0))
+					{
+						map.cells[i][j].Rect.setOutlineColor(Color(255, 0, 0));
+						map.cells[i][j].Rect.setOutlineThickness(2.f);
+					}
+				}
+				
+				
+				window.draw(map.cells[i][j].backSprite);
+				map.cells[i][j].backSprite.setTexture(backTexture);
+				
+				
 			}
 		}
-		map.cells[px][py].rect.setFillColor(Color(100, 0, 255));
+		window.draw(map.cells[px][py].frontSprite);
+		map.cells[px][py].frontSprite.setTexture(frontTexture);
+		map.cells[px][py].x = px;
+		map.cells[px][py].y = py;
 
 		window.display();
 	}

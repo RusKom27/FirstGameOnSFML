@@ -18,6 +18,8 @@ public:
 	int height;
 	int cellSize;
 	Tile cells[CELLS_COUNT_X][CELLS_COUNT_Y];
+	Texture backTexture;
+	
 
 	GameMap() 
 	{
@@ -32,7 +34,10 @@ public:
 		width = w;
 		height = h;
 		cellSize = cS;
+		backTexture.loadFromFile("Images\\Tile1.png");
+
 		setGrid();
+
 	};
 
 	void setGrid()
@@ -46,6 +51,7 @@ public:
 			{
 				y = row * 50;
 				cells[column][row] = Tile(x,y,cellSize);
+
 			}
 			
 		}
