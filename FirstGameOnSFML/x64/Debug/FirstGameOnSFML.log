@@ -6,6 +6,7 @@ C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\GameMap.cpp(48,31):
 C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\GameMap.cpp(48,35): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
 C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\GameMap.cpp(48,33): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
 C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\GameMap.cpp(48,31): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\main.cpp(31,14): warning C4244: инициализация: преобразование "sf::Int64" в "float", возможна потеря данных
   Player.cpp
   Tile.cpp
   Создание кода...

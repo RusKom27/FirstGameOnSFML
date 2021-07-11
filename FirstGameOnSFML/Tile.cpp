@@ -27,7 +27,7 @@ public:
 		y = Y;
 		size = Size;
 		rect.setSize(Vector2f(size, size));
-		rect.setOutlineThickness(0.5f);
+		rect.setOutlineThickness(1.f);
 		rect.setOutlineColor(Color(200, 200, 200));
 		rect.setPosition(x, y);
 	};

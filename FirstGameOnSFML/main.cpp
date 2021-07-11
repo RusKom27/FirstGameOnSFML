@@ -14,8 +14,11 @@ const int HEIGHT = 600;
 int main()
 {
 	int px = 0, py = 0;
+
+	Clock clock;
+
 	ContextSettings settings;
-	settings.antialiasingLevel = 8;
+	settings.antialiasingLevel = 0;
 
 	RenderWindow window(VideoMode(900, 600), "SFML Works!", Style::Default, settings);
 	window.setFramerateLimit(60);
@@ -24,6 +27,13 @@ int main()
 
 	while (window.isOpen())
 	{
+
+		float time = clock.getElapsedTime().asMicroseconds();
+		clock.restart();
+		time = time / 800;
+
+		cout << time << endl;
+
 		Event event;
 		while (window.pollEvent(event))
 		{
@@ -51,7 +61,7 @@ int main()
 				}
 				else if (event.key.code == Keyboard::S)
 				{
-					if (py != 13)
+					if (py != 11)
 						py += 1;
 				}
 			}

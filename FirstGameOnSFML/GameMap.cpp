@@ -5,14 +5,13 @@
 using namespace sf;
 using namespace std;
 
-const int CELLS_COUNT_X = 19; // width / cellSize
-const int CELLS_COUNT_Y = 16; // height / cellSize
+const int CELLS_COUNT_X = 18; // width / cellSize
+const int CELLS_COUNT_Y = 13; // height / cellSize
 
 class GameMap
 {
 private:
 	
-
 public:
 	
 	int width;
@@ -42,12 +41,13 @@ public:
 		int y = 0;
 		for (int column = 0; column < CELLS_COUNT_X; column++)
 		{
+			x = column * 50;
 			for (int row = 0; row < CELLS_COUNT_Y; row++)
 			{
 				y = row * 50;
 				cells[column][row] = Tile(x,y,cellSize);
 			}
-			x = column * 50;
+			
 		}
 	}
 
