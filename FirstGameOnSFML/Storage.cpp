@@ -4,7 +4,8 @@
 Storage::Storage()
 {
 	loadImage(backTexture, "Tile1.png");
-	loadImage(frontTexture, "Hero.png");
+	loadImage(frontTexture, "EmptyTile.png");
+	loadImage(heroTexture, "Hero.png");
 	font.loadFromFile("Fonts\\PixelFont.ttf");
 };
 

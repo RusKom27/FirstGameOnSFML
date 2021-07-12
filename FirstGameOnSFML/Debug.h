@@ -17,5 +17,6 @@ public:
 	int fps = 0;
 
 	void showFPS(RenderWindow& window, int time);
+	void EventHandle(Event& event);
 };
 

@@ -16,6 +16,7 @@ class Storage
 public:
 	Texture backTexture;
 	Texture frontTexture;
+	Texture heroTexture;
 	Font font;
 	
 	Storage();

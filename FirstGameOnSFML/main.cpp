@@ -3,6 +3,7 @@
 #include "GameMap.h"
 #include "Storage.h"
 #include "Debug.h"
+#include "Entity.h"
 
 using namespace sf;
 using namespace std;
@@ -10,8 +11,6 @@ using namespace std;
 
 int main()
 {
-	
-
 	Clock clock;
 
 	ContextSettings settings;
@@ -23,6 +22,9 @@ int main()
 	Storage storage;
 	Debug debug;
 	GameMap map(WIDTH, HEIGHT, 50);
+
+	Entity hero(0, 2);
+
 	int px = 0, py = 0;
 	int mouseX = 0, mouseY = 0;
 
@@ -50,38 +52,32 @@ int main()
 			{
 				if (event.key.code == Keyboard::D)
 				{
-					if (px != 17)
-						px += 1;
+					if (hero.x != 17)
+						hero.x += 1;
 				}
 				else if (event.key.code == Keyboard::A)
 				{
-					if (px != 0)
-						px -= 1;
+					if (hero.x != 0)
+						hero.x -= 1;
 				}
 				else if (event.key.code == Keyboard::W)
 				{
-					if (py != 0)
-						py -= 1;
+					if (hero.y != 0)
+						hero.y -= 1;
 				}
 				else if (event.key.code == Keyboard::S)
 				{
-					if (py != 11)
-						py += 1;
+					if (hero.y != 11)
+						hero.y += 1;
 				}
-				else if (event.key.code == Keyboard::G)
-					debug.gizmo = !debug.gizmo;
-				else if (event.key.code == Keyboard::F)
-					debug.showFps = !debug.showFps;
+				debug.EventHandle(event);
 			}
 		}
 		window.clear(Color(25, 25, 25, 0));
+		
+		map.drawMap(window);
 
-		map.drawGrid(window);
-
-		window.draw(map.cells[px][py].frontSprite);
-		map.cells[px][py].frontSprite.setTexture(storage.frontTexture);
-		map.cells[px][py].x = px;
-		map.cells[px][py].y = py;
+		hero.draw(map);
 
 		if (debug.gizmo)
 			map.drawGizmo(window, mouseX, mouseY);

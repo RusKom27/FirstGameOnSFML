@@ -29,6 +29,7 @@ void GameMap::setGrid()
 			y = j * cellSize;
 			cells[i][j] = Tile(x,y,cellSize);
 			cells[i][j].backSprite.setTexture(storage.backTexture);
+			cells[i][j].frontSprite.setTexture(storage.frontTexture);
 		}
 	}
 }
@@ -49,7 +50,7 @@ void GameMap::drawGizmo(RenderWindow& window, int mouseX, int mouseY)
 	}
 }
 
-void GameMap::drawGrid(RenderWindow &window)
+void GameMap::drawMap(RenderWindow &window)
 {
 	for (int i = 0; i < CELLS_COUNT_X; i++)
 	{
@@ -57,10 +58,8 @@ void GameMap::drawGrid(RenderWindow &window)
 		{
 			window.draw(cells[i][j].backSprite);
 			
-			
-			
+			window.draw(cells[i][j].frontSprite);
+			cells[i][j].frontSprite.setTexture(storage.frontTexture);
 		}
 	}
 }
-
-

@@ -28,5 +28,5 @@ public:
 
 	void drawGizmo(RenderWindow& window, int mouseX, int mouseY);
 
-	void drawGrid(RenderWindow& window);
+	void drawMap(RenderWindow& window);
 };
