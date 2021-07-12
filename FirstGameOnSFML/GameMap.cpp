@@ -1,61 +1,66 @@
+#include "GameMap.h"
 
-#include <iostream>
-#include "Tile.cpp"
-
-using namespace sf;
-using namespace std;
-
-const int CELLS_COUNT_X = 18; // width / cellSize
-const int CELLS_COUNT_Y = 13; // height / cellSize
-
-class GameMap
+GameMap::GameMap() 
 {
-private:
-	
-public:
-	
-	int width;
-	int height;
-	int cellSize;
-	Tile cells[CELLS_COUNT_X][CELLS_COUNT_Y];
-	Texture backTexture;
-	
+	width = 900;
+	height = 600;
+	cellSize = 50;
+	setGrid();
+};
 
-	GameMap() 
+GameMap::GameMap(float w, float h, float cS)
+{
+	width = w;
+	height = h;
+	cellSize = cS;
+	setGrid();
+};
+
+
+void GameMap::setGrid()
+{
+	int x = 0;
+	int y = 0;
+	for (int i = 0; i < CELLS_COUNT_X; i++)
 	{
-		width = 900;
-		height = 600;
-		cellSize = 50;
-		setGrid();
-	};
-
-	GameMap(int w, int h, int cS)
-	{
-		width = w;
-		height = h;
-		cellSize = cS;
-		backTexture.loadFromFile("Images\\Tile1.png");
-
-		setGrid();
-
-	};
-
-	void setGrid()
-	{
-		int x = 0;
-		int y = 0;
-		for (int column = 0; column < CELLS_COUNT_X; column++)
+		x = i * cellSize;
+		for (int j = 0; j < CELLS_COUNT_Y; j++)
 		{
-			x = column * 50;
-			for (int row = 0; row < CELLS_COUNT_Y; row++)
-			{
-				y = row * 50;
-				cells[column][row] = Tile(x,y,cellSize);
+			y = j * cellSize;
+			cells[i][j] = Tile(x,y,cellSize);
+			cells[i][j].backSprite.setTexture(storage.backTexture);
+		}
+	}
+}
 
+void GameMap::drawGizmo(RenderWindow& window, int mouseX, int mouseY)
+{
+	for (int i = 0; i < CELLS_COUNT_X; i++)
+	{
+		for (int j = 0; j < CELLS_COUNT_Y; j++)
+		{
+			window.draw(cells[i][j].Rect);
+			cells[i][j].Highlight();
+			if (storage.checkCollision(Vector2i(cells[i][j].x, cells[i][j].y), cells[i][j].size, Vector2i(mouseX, mouseY), 0))
+			{
+				cells[i][j].Select();
 			}
+		}
+	}
+}
+
+void GameMap::drawGrid(RenderWindow &window)
+{
+	for (int i = 0; i < CELLS_COUNT_X; i++)
+	{
+		for (int j = 0; j < CELLS_COUNT_Y; j++)
+		{
+			window.draw(cells[i][j].backSprite);
+			
+			
 			
 		}
 	}
+}
 
-};
 

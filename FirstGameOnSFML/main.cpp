@@ -1,52 +1,36 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include "GameMap.cpp"
-#include "Player.cpp"
+#include "GameMap.h"
+#include "Storage.h"
+#include "Debug.h"
 
 using namespace sf;
 using namespace std;
 
-const int WIDTH = 900;
-const int HEIGHT = 600;
-
-bool checkCollision(Vector2i obj1, int obj1Size, Vector2i obj2, int obj2Size) 
-{
-	if (obj1.x < obj2.x + obj2Size && obj1.y < obj2.y + obj2Size && obj1.x + obj1Size > obj2.x && obj1.y + obj1Size > obj2.y)
-		return true;
-	else
-		return false;
-}
 
 int main()
 {
-	int px = 0, py = 0;
-	bool gizmo = false;
+	
 
 	Clock clock;
 
 	ContextSettings settings;
 	settings.antialiasingLevel = 0;
 
-	RenderWindow window(VideoMode(900, 600), "SFML Works!", Style::Default, settings);
-	window.setFramerateLimit(60);
+	RenderWindow window(VideoMode(WIDTH, HEIGHT), "SFML Works!", Style::Default, settings);
+	window.setFramerateLimit(200);
 
+	Storage storage;
+	Debug debug;
 	GameMap map(WIDTH, HEIGHT, 50);
-
-	Mouse mouse;
+	int px = 0, py = 0;
 	int mouseX = 0, mouseY = 0;
-
-
-	Texture backTexture;
-	Texture frontTexture;
-	backTexture.loadFromFile("Images\\Tile1.png");
-	frontTexture.loadFromFile("Images\\Hero.png");
 
 	while (window.isOpen())
 	{
-
-		float time = clock.getElapsedTime().asMicroseconds();
+		int time = clock.getElapsedTime().asMicroseconds();
 		clock.restart();
-		time = time / 800;
+		time = 1000000/time;
 
 
 		Event event;
@@ -85,38 +69,25 @@ int main()
 						py += 1;
 				}
 				else if (event.key.code == Keyboard::G)
-					gizmo = !gizmo;
+					debug.gizmo = !debug.gizmo;
+				else if (event.key.code == Keyboard::F)
+					debug.showFps = !debug.showFps;
 			}
 		}
 		window.clear(Color(25, 25, 25, 0));
 
-		for (int i = 0; i < CELLS_COUNT_X; i++)
-		{
-			for (int j = 0; j < CELLS_COUNT_Y; j++)
-			{
-				if (gizmo)
-				{
-					window.draw(map.cells[i][j].Rect);
-					map.cells[i][j].Rect.setOutlineColor(Color(200, 200, 200));
-					map.cells[i][j].Rect.setOutlineThickness(0.6f);
-					if (checkCollision(Vector2i(map.cells[i][j].x, map.cells[i][j].y), map.cells[i][j].size, Vector2i(mouseX, mouseY), 0))
-					{
-						map.cells[i][j].Rect.setOutlineColor(Color(255, 0, 0));
-						map.cells[i][j].Rect.setOutlineThickness(2.f);
-					}
-				}
-				
-				
-				window.draw(map.cells[i][j].backSprite);
-				map.cells[i][j].backSprite.setTexture(backTexture);
-				
-				
-			}
-		}
+		map.drawGrid(window);
+
 		window.draw(map.cells[px][py].frontSprite);
-		map.cells[px][py].frontSprite.setTexture(frontTexture);
+		map.cells[px][py].frontSprite.setTexture(storage.frontTexture);
 		map.cells[px][py].x = px;
 		map.cells[px][py].y = py;
+
+		if (debug.gizmo)
+			map.drawGizmo(window, mouseX, mouseY);
+
+		if (debug.showFps)
+			debug.showFPS(window, time);
 
 		window.display();
 	}

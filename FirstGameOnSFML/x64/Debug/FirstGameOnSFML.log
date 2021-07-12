@@ -1,20 +1,23 @@
-﻿  main.cpp
-C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\GameMap.cpp(53,35): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\GameMap.cpp(53,33): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\GameMap.cpp(53,31): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\main.cpp(47,14): warning C4244: инициализация: преобразование "sf::Int64" в "float", возможна потеря данных
-C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\main.cpp(102,68): warning C4244: аргумент: преобразование "float" в "T", возможна потеря данных
+﻿  GameMap.cpp
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\GameMap.cpp(26,9): warning C4244: =: преобразование "float" в "int", возможна потеря данных
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\GameMap.cpp(29,10): warning C4244: =: преобразование "float" в "int", возможна потеря данных
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\GameMap.cpp(30,25): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\GameMap.cpp(30,23): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\GameMap.cpp(44,66): warning C4244: аргумент: преобразование "float" в "T", возможна потеря данных
           with
           [
               T=int
           ]
-C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\main.cpp(102,49): warning C4244: аргумент: преобразование "float" в "T", возможна потеря данных
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\GameMap.cpp(44,51): warning C4244: аргумент: преобразование "float" в "T", возможна потеря данных
           with
           [
               T=int
           ]
-C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\main.cpp(102,88): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
-C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\main.cpp(118,25): warning C4244: =: преобразование "int" в "float", возможна потеря данных
-C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\main.cpp(119,25): warning C4244: =: преобразование "int" в "float", возможна потеря данных
-C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\main.cpp(35,8): warning C4101: mouse: неиспользованная локальная переменная
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\GameMap.cpp(44,82): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+  Tile.cpp
+  Создание кода...
+  main.cpp
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\main.cpp(31,12): warning C4244: инициализация: преобразование "sf::Int64" в "int", возможна потеря данных
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\main.cpp(83,25): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\main.cpp(84,25): warning C4244: =: преобразование "int" в "float", возможна потеря данных
   FirstGameOnSFML.vcxproj -> C:\Users\RusKom\source\repos\FirstGameOnSFML\x64\Debug\FirstGameOnSFML.exe
