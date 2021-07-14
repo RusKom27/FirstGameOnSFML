@@ -3,9 +3,7 @@
 
 Storage::Storage()
 {
-	loadImage(backTexture, "Tile1.png");
-	loadImage(frontTexture, "EmptyTile.png");
-	loadImage(heroTexture, "Hero.png");
+	getTexturesFromImage(backTextures, loadImage("TileSet.png"));
 	font.loadFromFile("Fonts\\PixelFont.ttf");
 };
 
@@ -17,9 +15,21 @@ bool Storage::checkCollision(Vector2i obj1, int obj1Size, Vector2i obj2, int obj
 		return false;
 }
 
-void Storage::loadImage(Texture& texture, string fileName)
+Image Storage::loadImage(string fileName)
 {
-	texture.loadFromFile("Images\\" + fileName);
+	Image image;
+	image.loadFromFile("Images\\" + fileName);
+	return image;
+}
+
+Image* Storage::loadImages(int filenames[])
+{
+	for (int i = 0; i < arraySize(filenames); i++)
+	{
+		cout << i << endl;
+	}
+	Image* images = new Image[3];
+	return images;
 }
 
 void Storage::showText(RenderWindow& window, string txt, int x, int y, int fontSize, Color color)
@@ -29,9 +39,19 @@ void Storage::showText(RenderWindow& window, string txt, int x, int y, int fontS
 	window.draw(text);
 }
 
-Texture* Storage::getTexturesFromImage()
+int Storage::getTexturesFromImage(Texture**& textures,Image image)
 {
-	Texture m[10];
-	return m;
+	int texturesCountX = image.getSize().x / TILE_SIZE;
+	int texturesCountY = image.getSize().y / TILE_SIZE;
+	textures = new Texture*[texturesCountX];
+	for (int i = 0; i < texturesCountX; i++)
+	{
+		textures[i] = new Texture[texturesCountY];
+		for (int j = 0; j < texturesCountY; j++)
+		{
+			textures[i][j].loadFromImage(image, IntRect(TILE_SIZE * i, TILE_SIZE * j, TILE_SIZE, TILE_SIZE));
+		}
+	}
+	return texturesCountX * texturesCountY;
 }
 

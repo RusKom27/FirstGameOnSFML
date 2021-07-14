@@ -3,11 +3,11 @@
 #include <iostream>
 #include "Tile.h"
 #include "Storage.h"
+#include "tinyxml2.h"
 
 using namespace sf;
 using namespace std;
-
-
+using namespace tinyxml2;
 
 class GameMap
 {
@@ -17,16 +17,14 @@ public:
 
 	float width;
 	float height;
-	float cellSize;
-	Tile cells[CELLS_COUNT_X][CELLS_COUNT_Y];
-
-	GameMap();
+	float tileSize;
+	Tile tiles[TILES_COUNT_X][TILES_COUNT_Y];
 
 	GameMap(float w, float h, float cS);
 
 	void setGrid();
 
-	void drawGizmo(RenderWindow& window, int mouseX, int mouseY);
-
 	void drawMap(RenderWindow& window);
+
+	void loadMap(const char* name);
 };

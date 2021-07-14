@@ -1,3 +1,16 @@
-﻿  main.cpp
-C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\main.cpp(33,12): warning C4244: инициализация: преобразование "sf::Int64" в "int", возможна потеря данных
+﻿  Debug.cpp
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\Debug.cpp(8,17): warning C4244: =: преобразование "float" в "int", возможна потеря данных
+  Entity.cpp
+  GameMap.cpp
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\GameMap.cpp(17,9): warning C4244: =: преобразование "float" в "int", возможна потеря данных
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\GameMap.cpp(20,10): warning C4244: =: преобразование "float" в "int", возможна потеря данных
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\GameMap.cpp(21,25): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\GameMap.cpp(21,23): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+  Player.cpp
+  Storage.cpp
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\Storage.cpp(38,22): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\Storage.cpp(38,19): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+  Создание кода...
+  main.cpp
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\main.cpp(24,10): warning C4101: entities: неиспользованная локальная переменная
   FirstGameOnSFML.vcxproj -> C:\Users\RusKom\source\repos\FirstGameOnSFML\x64\Debug\FirstGameOnSFML.exe

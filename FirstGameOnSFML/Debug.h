@@ -10,13 +10,13 @@ class Debug
 {
 private:
 	Storage storage;
-	int coolDown = 0;
+	float coolDown = 0;
 public:
 	bool gizmo = false;
 	bool showFps = false;
 	int fps = 0;
 
-	void showFPS(RenderWindow& window, int time);
+	void showFPS(RenderWindow& window, float elapsed);
 	void EventHandle(Event& event);
 };
 

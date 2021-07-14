@@ -19,9 +19,4 @@ public:
 	Tile();
 
 	Tile(float X, float Y, float Size);
-
-	void Select();
-
-	void Highlight();
-
 };

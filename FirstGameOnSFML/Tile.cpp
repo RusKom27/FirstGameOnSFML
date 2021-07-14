@@ -17,15 +17,3 @@ Tile::Tile(float X, float Y, float Size) {
 	frontSprite.setPosition(x, y);
 	backSprite.setPosition(x, y);
 };
-
-void Tile::Highlight()
-{
-	Rect.setOutlineColor(Color(200, 200, 200));
-	Rect.setFillColor(Color(200, 200, 200, 0));
-	Rect.setOutlineThickness(0.6f);
-}
-void Tile::Select()
-{
-	Rect.setOutlineColor(Color(255, 0, 0));
-	Rect.setOutlineThickness(2.f);
-}

@@ -1,0 +1,387 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<map>
+	<row>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back="1"></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back="1"></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back="1"></tile>
+		<tile front="" back="1"></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+	</row>
+	<row>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back="2"></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back="2"></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+	</row>
+	<row>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+	</row>
+	<row>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+	</row>
+	<row>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+	</row>
+	<row>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+	</row>
+	<row>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+	</row>
+	<row>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+	</row>
+	<row>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+	</row>
+	<row>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+	</row>
+	<row>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+	</row>
+	<row>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+	</row>
+	<row>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+	</row>
+	<row>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+	</row>
+	<row>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+	</row>
+	<row>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+	</row>
+	<row>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+	</row>
+	<row>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+	</row>
+	<row>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+	</row>
+	<row>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+	</row>
+	<row>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+	</row>
+	<row>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+	</row>
+	<row>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+	</row>
+	<row>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+		<tile front="" back=""></tile>
+	</row>
+</map>
