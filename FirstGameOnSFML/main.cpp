@@ -16,7 +16,7 @@ int main()
 	ContextSettings settings;
 	settings.antialiasingLevel = 0;
 
-	RenderWindow window(VideoMode(WIDTH, HEIGHT), "SFML Works!", Style::Default, settings);
+	RenderWindow window(VideoMode(WIDTH, HEIGHT), "SFML RPG", Style::Default, settings);
 	window.setPosition(Vector2i(1500, 0));
 	window.setFramerateLimit(60);
 
@@ -25,17 +25,8 @@ int main()
 
 	Storage storage;
 	Debug debug;
-	GameMap map(WIDTH, HEIGHT, TILE_SIZE);
+	GameMap map;
 	map.loadMap("Maps\\Map_0.0.xml");
-
-	Texture heroTextures[] = { 
-		storage.backTextures[0][0], 
-		storage.backTextures[1][0], 
-		storage.backTextures[2][0], 
-		storage.backTextures[3][0], 
-		storage.backTextures[4][0] };
-
-	Player hero(0, 2, heroTextures, 4, 0.5);
 	
 	int px = 0, py = 0;
 	int mouseX = 0, mouseY = 0;
@@ -63,16 +54,13 @@ int main()
 			}
 			else if (event.type == Event::KeyPressed)
 			{
-				hero.EventHandle(event);
+				map.update(map.player.EventHandle(event));
 				debug.EventHandle(event);
 			}
 		}
 		window.clear(Color(25, 25, 25, 0));
-		
+		map.player.update(time);
 		map.drawMap(window);
-		hero.update(time);
-		hero.draw(map);
-
 
 		if (debug.showFps)
 			debug.showFPS(window, time);

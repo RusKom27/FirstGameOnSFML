@@ -1,10 +1,7 @@
 #include "GameMap.h"
 
-GameMap::GameMap(float w, float h, float cS)
+GameMap::GameMap()
 {
-	width = w;
-	height = h;
-	tileSize = cS;
 	setGrid();
 };
 
@@ -14,11 +11,11 @@ void GameMap::setGrid()
 	int y = 0;
 	for (int i = 0; i < TILES_COUNT_X; i++)
 	{
-		x = i * tileSize;
+		x = i * TILE_SIZE;
 		for (int j = 0; j < TILES_COUNT_Y; j++)
 		{
-			y = j * tileSize;
-			tiles[i][j] = Tile(x,y,tileSize);
+			y = j * TILE_SIZE;
+			tiles[i][j] = Tile(x,y,TILE_SIZE);
 		}
 	}
 }
@@ -34,6 +31,11 @@ void GameMap::drawMap(RenderWindow &window)
 			window.draw(tiles[i][j].frontSprite);
 		}
 	}
+	for (int i = 0; i < enemies.size(); i++)
+	{
+		window.draw(enemies[i].sprite);
+	}
+	window.draw(player.sprite);
 }
 
 void GameMap::loadMap(const char* name)
@@ -68,6 +70,10 @@ void GameMap::loadMap(const char* name)
 			switch (tile->IntAttribute("front"))
 			{
 			case 1:
+				enemies.push_back(Enemy(i, j, storage.frontTextures[1], 3, 0.3));
+				break;
+			case 8:
+				player = Player(i, j, storage.frontTextures[8], 6, 0.3f);
 				break;
 			default:
 				tiles[i][j].frontSprite.setTexture(storage.backTextures[0][6]);
@@ -83,4 +89,15 @@ void GameMap::loadMap(const char* name)
 	}
 }
 
+void GameMap::update(bool trigger)
+{
+	if (trigger)
+	{
+		for (int i = 0; i < enemies.size(); i++)
+		{
+			enemies[i].move();
+		}
+	}
+	
+}
 

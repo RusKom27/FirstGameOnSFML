@@ -1,8 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include "GameMap.h"
 #include "Animator.h"
+#include "Storage.h"
 
 using namespace sf;
 using namespace std;
@@ -10,13 +10,10 @@ using namespace std;
 
 class Entity
 {
-private:
-	Storage storage;
-	
 public:
 	int x;
 	int y;
-	Texture texture;
+	Sprite sprite;
 	Texture* textures;
 	Animator animator;
 
@@ -24,8 +21,10 @@ public:
 
 	Entity(int X, int Y, Texture* textures_, int countOfFrames, float animationSpeed);
 
-	void draw(GameMap& map);
-
+	void checkNearbyTiles()
+	{
+		//TODO От игрока выходят 4 луча, которые контактируют с клетками, которые перебираются в массиве обьектов с коллизией
+	}
 	void update(float time);
 };
 

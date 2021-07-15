@@ -13,12 +13,12 @@ Animator::Animator(Texture* textures_, float speed_, int countOfFrames_)
 	countOfFrames = countOfFrames_;
 }
 
-void Animator::animation(float timeElapsed, Texture& texture)
+void Animator::animation(float timeElapsed, Sprite& sprite)
 {
 	timer += timeElapsed;
 	if (timer > speed)
 	{
-		texture = textures[frame];
+		sprite.setTexture(textures[frame]);
 		if (frame < countOfFrames)
 			frame++;
 		else

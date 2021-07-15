@@ -3,7 +3,8 @@
 
 Storage::Storage()
 {
-	getTexturesFromImage(backTextures, loadImage("TileSet.png"));
+	getTexturesFromImage(backTextures, loadImage("BackTileSet.png"));
+	getTexturesFromImage(frontTextures, loadImage("FrontTileSet.png"));
 	font.loadFromFile("Fonts\\PixelFont.ttf");
 };
 

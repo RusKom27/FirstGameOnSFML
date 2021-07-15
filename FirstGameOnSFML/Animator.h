@@ -18,6 +18,6 @@ public:
 
 	Animator(Texture* textures_, float speed_, int countOfFrames_);
 
-	void animation(float timeElapsed, Texture& texture);
+	void animation(float timeElapsed, Sprite& sprite);
 };
 

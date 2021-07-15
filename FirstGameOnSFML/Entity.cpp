@@ -1,27 +1,21 @@
 #include "Entity.h"
-#include "Storage.h"
 
 Entity::Entity()
 {
-	x = 0;
-	y = 0;
 }
 
 Entity::Entity(int X, int Y, Texture* textures_, int countOfFrames, float animationSpeed)
 {
-	texture = textures_[0];
+	x = X * TILE_SIZE;
+	y = Y * TILE_SIZE;
 	textures = textures_;
+	sprite = Sprite(textures[0]);
+	sprite.setPosition(Vector2f(x, y));
 	animator = Animator(textures, animationSpeed, countOfFrames);
-	x = X;
-	y = Y;
 }
 
 void Entity::update(float time)
 {
-	animator.animation(time, texture);
-}
-
-void Entity::draw(GameMap& map)
-{
-	map.tiles[x][y].frontSprite.setTexture(texture);
+	sprite.setPosition(x, y);
+	animator.animation(time, sprite);
 }

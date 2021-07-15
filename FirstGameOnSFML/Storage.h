@@ -4,6 +4,7 @@
 #include <iostream>
 #include <fstream>
 
+
 #define arraySize(a) (sizeof(a)/sizeof((a)[0]))
 
 using namespace sf;
@@ -16,14 +17,15 @@ const int TILE_SIZE = 50;
 const int TILES_COUNT_X = WIDTH / TILE_SIZE;
 const int TILES_COUNT_Y = HEIGHT / TILE_SIZE;
 
-const double MS_PER_UPDATE = 8;
 
 class Storage
 {
 public:
 	
 	Texture** backTextures;
-	
+
+	Texture** frontTextures;
+
 	Font font;
 	
 	Storage();

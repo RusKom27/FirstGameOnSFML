@@ -4,8 +4,9 @@
 class Player : public Entity
 {
 public:
+	Player();
 	Player(int X, int Y, Texture textures[], int countOfFrames, float animationSpeed);
 
-	void EventHandle(Event& event);
+	bool EventHandle(Event& event);
 };
 
