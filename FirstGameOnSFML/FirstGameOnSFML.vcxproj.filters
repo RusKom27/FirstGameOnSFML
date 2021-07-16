@@ -48,6 +48,9 @@
     <ClCompile Include="Enemy.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="MapEditor.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Storage.h">
@@ -78,6 +81,9 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Enemy.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="MapEditor.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

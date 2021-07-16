@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <map>
 	<row>
-		<tile front="" back=""></tile>
+		<tile front="" back="" collision="true"></tile>
 		<tile front="" back=""></tile>
 		<tile front="" back=""></tile>
 		<tile front="" back=""></tile>
@@ -39,7 +39,7 @@
 		<tile front="" back=""></tile>
 		<tile front="" back=""></tile>
 		<tile front="" back=""></tile>
-		<tile front="" back=""></tile>
+		<tile front="" back="" collision="true"></tile>
 		<tile front="" back=""></tile>
 		<tile front="" back=""></tile>
 		<tile front="" back=""></tile>
@@ -57,9 +57,9 @@
 		<tile front="" back=""></tile>
 		<tile front="" back=""></tile>
 		<tile front="" back=""></tile>
+		<tile front="" back="" collision="true"></tile>
 		<tile front="" back=""></tile>
-		<tile front="" back=""></tile>
-		<tile front="" back=""></tile>
+		<tile front="" back="" collision="true"></tile>
 		<tile front="" back=""></tile>
 		<tile front="" back=""></tile>
 		<tile front="" back=""></tile>

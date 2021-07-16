@@ -16,6 +16,7 @@ class GameMap
 private:
 	Storage storage;
 public:
+	vector<Vector2i> collisions;
 	vector<Enemy> enemies;
 	Player player;
 
@@ -28,6 +29,8 @@ public:
 	void drawMap(RenderWindow& window);
 
 	void loadMap(const char* name);
+
+	void buildEmptyMap();
 
 	void update(bool trigger);
 };

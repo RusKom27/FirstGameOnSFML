@@ -38,6 +38,18 @@ void GameMap::drawMap(RenderWindow &window)
 	window.draw(player.sprite);
 }
 
+void GameMap::buildEmptyMap()
+{
+	for (int i = 0; i < TILES_COUNT_X; i++)
+	{
+		for (int j = 0; j < TILES_COUNT_Y; j++)
+		{
+			tiles[i][j].backSprite.setTexture(storage.backTextures[1][1]);
+			tiles[i][j].frontSprite.setTexture(storage.backTextures[0][6]);
+		}
+	}
+}
+
 void GameMap::loadMap(const char* name)
 {
 
@@ -79,6 +91,14 @@ void GameMap::loadMap(const char* name)
 				tiles[i][j].frontSprite.setTexture(storage.backTextures[0][6]);
 				break;
 			}
+			switch (tile->BoolAttribute("collision"))
+			{
+			case true:
+				collisions.push_back(Vector2i(i * TILE_SIZE, j * TILE_SIZE));
+				break;
+			default:
+				break;
+			}
 			tile = tile->NextSiblingElement("tile");
 			j++;
 		}
@@ -91,6 +111,7 @@ void GameMap::loadMap(const char* name)
 
 void GameMap::update(bool trigger)
 {
+	
 	if (trigger)
 	{
 		for (int i = 0; i < enemies.size(); i++)

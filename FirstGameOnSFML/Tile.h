@@ -10,7 +10,6 @@ class Tile
 public:
 	float x;
 	float y;
-	float size;
 
 	RectangleShape Rect;
 	Sprite backSprite;
@@ -18,5 +17,5 @@ public:
 
 	Tile();
 
-	Tile(float X, float Y, float Size);
+	Tile(float X, float Y, float size);
 };

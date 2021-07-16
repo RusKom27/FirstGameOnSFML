@@ -4,6 +4,7 @@
 #include "Storage.h"
 #include "Debug.h"
 #include "Player.h"
+#include "MapEditor.h"
 
 
 using namespace sf;
@@ -26,13 +27,14 @@ int main()
 	Storage storage;
 	Debug debug;
 	GameMap map;
+	MapEditor mapEditor;
 	map.loadMap("Maps\\Map_0.0.xml");
 	
 	int px = 0, py = 0;
 	int mouseX = 0, mouseY = 0;
 
 	float time = 0;
-
+	mapEditor.createWindow();
 
 	while (window.isOpen())
 	{
@@ -54,12 +56,20 @@ int main()
 			}
 			else if (event.type == Event::KeyPressed)
 			{
-				map.update(map.player.EventHandle(event));
+				map.update(map.player.EventHandle(event, map.collisions));
 				debug.EventHandle(event);
+				if (event.key.code == Keyboard::M)
+					mapEditor.createWindow();
 			}
 		}
+		
 		window.clear(Color(25, 25, 25, 0));
+
+		mapEditor.update(time);
+
+
 		map.player.update(time);
+
 		map.drawMap(window);
 
 		if (debug.showFps)

@@ -7,6 +7,6 @@ public:
 	Player();
 	Player(int X, int Y, Texture textures[], int countOfFrames, float animationSpeed);
 
-	bool EventHandle(Event& event);
+	bool EventHandle(Event& event, vector<Vector2i> collisions);
 };
 

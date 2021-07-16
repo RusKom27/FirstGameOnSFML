@@ -9,31 +9,35 @@ Player::Player(int X, int Y, Texture textures[], int countOfFrames, float animat
 {
 }
 
-bool Player::EventHandle(Event& event)
+bool Player::EventHandle(Event& event, vector<Vector2i> collisions)
 {
 	if (event.key.code == Keyboard::D)
 	{
-		if (x/TILE_SIZE != TILES_COUNT_X - 1)
+		if (checkNearbyTiles(collisions, Vector2i(1, 0)))
 			x += TILE_SIZE;
 		return true;
 	}
-	if (event.key.code == Keyboard::A)
+	else if (event.key.code == Keyboard::A)
 	{
-		if (x / TILE_SIZE != 0)
+		if (checkNearbyTiles(collisions, Vector2i(-1, 0)))
 			x -= TILE_SIZE;
 		return true;
 	}
-	if (event.key.code == Keyboard::W)
+	else if (event.key.code == Keyboard::W)
 	{
-		if (y / TILE_SIZE != 0)
+		if (checkNearbyTiles(collisions, Vector2i(0, -1)))
 			y -= TILE_SIZE;
 		return true;
 	}
-	if (event.key.code == Keyboard::S)
+	else if (event.key.code == Keyboard::S)
 	{
-		if (y / TILE_SIZE != TILES_COUNT_Y - 1)
+		if (checkNearbyTiles(collisions, Vector2i(0, 1)))
 			y += TILE_SIZE;
 		return true;
 	}
-	printf("%i\t%i\n",x * 50, y * 50);
+	else
+	{
+		return false;
+	}
+	
 }

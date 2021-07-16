@@ -10,6 +10,8 @@ using namespace std;
 
 class Entity
 {
+private:
+	Storage storage;
 public:
 	int x;
 	int y;
@@ -21,10 +23,7 @@ public:
 
 	Entity(int X, int Y, Texture* textures_, int countOfFrames, float animationSpeed);
 
-	void checkNearbyTiles()
-	{
-		//TODO От игрока выходят 4 луча, которые контактируют с клетками, которые перебираются в массиве обьектов с коллизией
-	}
+	bool checkNearbyTiles(vector<Vector2i> coords, Vector2i axis);
 	void update(float time);
 };
 
