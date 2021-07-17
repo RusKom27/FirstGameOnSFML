@@ -1,6 +1,7 @@
 #pragma once
 #include "Storage.h"
 #include "GameMap.h"
+#include "UIPanel.h"
 
 class MapEditor
 {
@@ -13,8 +14,8 @@ private:
 	bool leftMousePressed = false;
 	bool rightMousePressed = false;
 	bool drawCollisions = false;
-	Texture* chosenBackTexture;
-	Texture* chosenFrontTexture;
+	Texture chosenBackTexture;
+	Texture chosenFrontTexture;
 
 public:
 	MapEditor() 
@@ -67,6 +68,7 @@ public:
 		}
 	}
 
+
 	void drawTiles()
 	{
 		for (int i = 0; i < TILES_COUNT_X; i++)
@@ -76,9 +78,9 @@ public:
 				if (storage.checkCollision(Vector2i(map->tiles[i][j].x, map->tiles[i][j].y), TILE_SIZE, Vector2i(mouseX, mouseY), 0))
 				{
 					if (rightMousePressed)
-						map->tiles[i][j].backSprite.setTexture(storage.backTextures[1][1]);
+						map->tiles[i][j].backSprite.setTexture(chosenBackTexture);
 					if (leftMousePressed)
-						map->tiles[i][j].backSprite.setTexture(storage.backTextures[0][0]);
+						map->tiles[i][j].backSprite.setTexture(chosenFrontTexture);
 				}
 			}
 		}
@@ -89,4 +91,5 @@ public:
 		map->drawMap(*window);
 	}
 };
+
 
