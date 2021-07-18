@@ -20,6 +20,22 @@ void GameMap::setGrid()
 	}
 }
 
+void GameMap::setPosition(Vector2f coords)
+{
+	int x = coords.x;
+	int y = coords.y;
+	for (int i = 0; i < TILES_COUNT_X; i++)
+	{
+		x = i * TILE_SIZE;
+		for (int j = 0; j < TILES_COUNT_Y; j++)
+		{
+			y = j * TILE_SIZE;
+			tiles[i][j].x = x;
+			tiles[i][j].y = y;
+		}
+	}
+}
+
 void GameMap::drawMap(RenderWindow &window)
 {
 	for (int i = 0; i < TILES_COUNT_X; i++)

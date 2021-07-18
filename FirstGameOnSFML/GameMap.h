@@ -26,6 +26,8 @@ public:
 
 	void setGrid();
 
+	void setPosition(Vector2f coords);
+
 	void drawMap(RenderWindow& window);
 
 	void loadMap(const char* name);

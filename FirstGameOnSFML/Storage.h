@@ -23,14 +23,15 @@ class Storage
 public:
 	
 	Texture** backTextures;
-
+	Texture** UITiles;
 	Texture** frontTextures;
 
 	Font font;
 	
 	Storage();
 
-	bool checkCollision(Vector2i obj1, int obj1Size, Vector2i obj2, int obj2Size);
+	bool checkCollision(Vector2f obj1, Vector2f obj1Size, Vector2f obj2, Vector2f obj2Size);
+	Vector2f getLocalCoords(Vector2f obj1, Vector2f obj1Size, Vector2f obj2, Vector2f obj2Size);
 	Image loadImage(string fileName);
 	Image* loadImages(int filenames[]);
 	void showText(RenderWindow& window, string txt, int x, int y, int fontSize, Color color);
