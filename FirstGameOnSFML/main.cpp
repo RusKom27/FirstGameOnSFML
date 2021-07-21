@@ -3,7 +3,6 @@
 #include "GameMap.h"
 #include "Storage.h"
 #include "Debug.h"
-#include "Player.h"
 #include "MapEditor.h"
 
 
@@ -14,28 +13,25 @@ int main()
 {
 	Clock clock;
 
-	ContextSettings settings;
-	settings.antialiasingLevel = 0;
-
-	RenderWindow window(VideoMode(WIDTH, HEIGHT), "SFML RPG", Style::Default, settings);
+	RenderWindow window(VideoMode(WIDTH, HEIGHT), "SFML RPG", Style::Default);
+	View view = window.getDefaultView();
+	view.setCenter(Vector2f(0, 0));
 	window.setPosition(Vector2i(1500, 0));
 	window.setFramerateLimit(60);
-
-
-	Entity* entities;
 
 	Storage storage;
 	Debug debug;
 	GameMap map;
 	MapEditor mapEditor;
 	map.loadMap("Maps\\Map_0.0.xml");
-	
+
 	int px = 0, py = 0;
 	int mouseX = 0, mouseY = 0;
 
 	float time = 0;
+	
 	mapEditor.createWindow();
-
+	
 	while (window.isOpen())
 	{
 		time = clock.getElapsedTime().asSeconds();
@@ -48,6 +44,12 @@ int main()
 			{
 				window.close();
 				return 0;
+			}
+			else if (event.type == Event::Resized)
+			{
+				view.setSize(static_cast<float>(event.size.width), static_cast<float>(event.size.height));
+				view.setCenter(static_cast<float>(event.size.width) / 2, static_cast<float>(event.size.height) / 2);
+				window.setView(view);
 			}
 			else if (event.type == Event::MouseMoved)
 			{
@@ -63,11 +65,10 @@ int main()
 			}
 		}
 		
+
 		window.clear(Color(25, 25, 25, 0));
 
 		mapEditor.update(time);
-
-
 		map.player.update(time);
 
 		map.drawMap(window);

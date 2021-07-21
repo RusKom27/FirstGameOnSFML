@@ -3,6 +3,8 @@
 GameMap::GameMap()
 {
 	setGrid();
+	storage.getTexturesFromImage(backTextures, storage.loadImage("BackTileSet.png"));
+	storage.getTexturesFromImage(frontTextures, storage.loadImage("FrontTileSet.png"));
 };
 
 void GameMap::setGrid()
@@ -60,8 +62,8 @@ void GameMap::buildEmptyMap()
 	{
 		for (int j = 0; j < TILES_COUNT_Y; j++)
 		{
-			tiles[i][j].backSprite.setTexture(storage.backTextures[1][1]);
-			tiles[i][j].frontSprite.setTexture(storage.backTextures[0][6]);
+			tiles[i][j].backSprite.setTexture(backTextures[1][1]);
+			tiles[i][j].frontSprite.setTexture(backTextures[0][6]);
 		}
 	}
 }
@@ -89,22 +91,22 @@ void GameMap::loadMap(const char* name)
 			switch (tile->IntAttribute("back"))
 			{
 			case 1:
-				tiles[i][j].backSprite.setTexture(storage.backTextures[0][2]);
+				tiles[i][j].backSprite.setTexture(backTextures[0][2]);
 				break;
 			default:
-				tiles[i][j].backSprite.setTexture(storage.backTextures[1][1]);
+				tiles[i][j].backSprite.setTexture(backTextures[1][1]);
 				break;
 			}
 			switch (tile->IntAttribute("front"))
 			{
 			case 1:
-				enemies.push_back(Enemy(i, j, storage.frontTextures[1], 3, 0.3));
+				enemies.push_back(Enemy(i, j, frontTextures[1], 3, 0.3));
 				break;
 			case 8:
-				player = Player(i, j, storage.frontTextures[8], 6, 0.3f);
+				player = Player(i, j, frontTextures[8], 6, 0.3f);
 				break;
 			default:
-				tiles[i][j].frontSprite.setTexture(storage.backTextures[0][6]);
+				tiles[i][j].frontSprite.setTexture(backTextures[0][6]);
 				break;
 			}
 			switch (tile->BoolAttribute("collision"))

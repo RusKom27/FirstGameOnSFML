@@ -2,31 +2,30 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "Storage.h"
+#include "UIElement.h"
+#include "UIButton.h"
 
 using namespace sf;
 using namespace std;
 
-class UIPanel
+class UIPanel : public UIElement
 {
-private:
-	Storage storage;
-	float width = 0;
-	float height = 0;
-	float x = 0;
-	float y = y;
-	float headerHeight = 50;
-
 public:
-	RectangleShape mainRect;
 	RectangleShape headerRect;
-	Sprite borders[8];
+	UIButton closeButton;
 
 	UIPanel();
 
-	UIPanel(int x, int y, float width, float height);
+	~UIPanel();
 
-	void draw(RenderWindow& window);
+	UIPanel(Vector2f position_, Vector2f size_, Border border, String text_, float headerHeight);
 
-	void setPosition(int x, int y);
+	void close();
+
+	void eventHandle(Vector2f mouseCoords);
+
+	virtual void draw(RenderWindow& window);
+
+	void setPosition(Vector2f position_);
 };
 

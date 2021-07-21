@@ -1,24 +1,5 @@
 ﻿  MapEditor.cpp
-C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\MapEditor.h(77,40): warning C4244: аргумент: преобразование "T" в "int", возможна потеря данных
-          with
-          [
-              T=float
-          ]
-C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\MapEditor.h(76,40): warning C4244: аргумент: преобразование "T" в "int", возможна потеря данных
-          with
-          [
-              T=float
-          ]
+  UIPanel.cpp
+  Создание кода...
   main.cpp
-C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\MapEditor.h(77,40): warning C4244: аргумент: преобразование "T" в "int", возможна потеря данных
-          with
-          [
-              T=float
-          ]
-C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\MapEditor.h(76,40): warning C4244: аргумент: преобразование "T" в "int", возможна потеря данных
-          with
-          [
-              T=float
-          ]
-C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\main.cpp(25,10): warning C4101: entities: неиспользованная локальная переменная
   FirstGameOnSFML.vcxproj -> C:\Users\RusKom\source\repos\FirstGameOnSFML\x64\Debug\FirstGameOnSFML.exe

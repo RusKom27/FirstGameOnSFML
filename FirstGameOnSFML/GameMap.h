@@ -16,6 +16,8 @@ class GameMap
 private:
 	Storage storage;
 public:
+	Texture** backTextures;
+	Texture** frontTextures;
 	vector<Vector2i> collisions;
 	vector<Enemy> enemies;
 	Player player;

@@ -21,11 +21,6 @@ const int TILES_COUNT_Y = HEIGHT / TILE_SIZE;
 class Storage
 {
 public:
-	
-	Texture** backTextures;
-	Texture** UITiles;
-	Texture** frontTextures;
-
 	Font font;
 	
 	Storage();
@@ -33,7 +28,6 @@ public:
 	bool checkCollision(Vector2f obj1, Vector2f obj1Size, Vector2f obj2, Vector2f obj2Size);
 	Vector2f getLocalCoords(Vector2f obj1, Vector2f obj1Size, Vector2f obj2, Vector2f obj2Size);
 	Image loadImage(string fileName);
-	Image* loadImages(int filenames[]);
-	void showText(RenderWindow& window, string txt, int x, int y, int fontSize, Color color);
+	void showText(RenderWindow& window, string txt, Vector2f position, int fontSize, Color color);
 	int getTexturesFromImage(Texture**& textures, Image image);
 };

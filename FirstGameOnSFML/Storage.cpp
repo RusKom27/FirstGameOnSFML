@@ -3,9 +3,6 @@
 
 Storage::Storage()
 {
-	getTexturesFromImage(backTextures, loadImage("BackTileSet.png"));
-	getTexturesFromImage(frontTextures, loadImage("FrontTileSet.png"));
-	getTexturesFromImage(UITiles, loadImage("UITiles.png"));
 	font.loadFromFile("Fonts\\PixelFont.ttf");
 };
 
@@ -26,24 +23,18 @@ Vector2f Storage::getLocalCoords(Vector2f obj1, Vector2f obj1Size, Vector2f obj2
 Image Storage::loadImage(string fileName)
 {
 	Image image;
-	image.loadFromFile("Images\\" + fileName);
+	if (image.loadFromFile("Images\\" + fileName))
+		cout << "loaded " << fileName << endl;
+	else
+		cout << "ERROR loaded " << fileName << endl;
 	return image;
 }
 
-Image* Storage::loadImages(int filenames[])
-{
-	for (int i = 0; i < arraySize(filenames); i++)
-	{
-		cout << i << endl;
-	}
-	Image* images = new Image[3];
-	return images;
-}
-
-void Storage::showText(RenderWindow& window, string txt, int x, int y, int fontSize, Color color)
+void Storage::showText(RenderWindow& window, string txt, Vector2f position, int fontSize, Color color)
 {
 	Text text(txt, font, fontSize);
-	text.setPosition(x, y);
+
+	text.setPosition(position);
 	window.draw(text);
 }
 

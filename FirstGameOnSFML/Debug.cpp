@@ -8,7 +8,7 @@ void Debug::showFPS(RenderWindow& window, float elapsed)
 		fps = elapsed * 10000;
 		coolDown = 0;
 	}
-	storage.showText(window, "FPS: " + to_string(fps), 0, 0, 20, Color(220, 220, 220));
+	storage.showText(window, "FPS: " + to_string(fps),Vector2f(0,0), 20, Color(220, 220, 220));
 }
 
 void Debug::EventHandle(Event& event)

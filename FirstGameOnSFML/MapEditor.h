@@ -2,11 +2,12 @@
 #include "Storage.h"
 #include "GameMap.h"
 #include "UIPanel.h"
+#include "UIButton.h"
 
 class MapEditor
 {
 private:
-	RenderWindow* window;
+	View view;
 	GameMap* map;
 	Storage storage;
 	Vector2f mouseCoords = Vector2f(0, 0);
@@ -17,21 +18,28 @@ private:
 	Texture chosenBackTexture;
 	Texture chosenFrontTexture;
 	UIPanel panel;
+	UIButton button;
 
 public:
+	RenderWindow* window;
+
 	MapEditor() 
 	{
 		map = new GameMap();
 		map->buildEmptyMap();
-		panel = UIPanel(WIDTH/2, 10, 410, 320);
+		panel = UIPanel(Vector2f(WIDTH/2, 10), Vector2f(410, 200), Border::Thin, "TEST", 50);
+		button = UIButton(Vector2f(WIDTH, 10), Vector2f(150, 60), Border::Thin, "OK");
+		panel.setBackgroundTexture(map->backTextures[3][0]);
 	}
 
 	void createWindow()
 	{
 		if (!window)
 		{
-			window = new RenderWindow(VideoMode(WIDTH + 150, HEIGHT), "Map Editor");
+			window = new RenderWindow(VideoMode::getFullscreenModes()[0], "Map Editor");
 			window->setPosition(Vector2i(0, 0));
+			View view = window->getDefaultView();
+			view.setCenter(Vector2f(0, 0));
 		}
 	}
 
@@ -52,14 +60,17 @@ public:
 				}
 				else if (event.type == Event::Resized)
 				{
+					view.setSize(static_cast<float>(event.size.width), static_cast<float>(event.size.height));
+					view.setCenter(static_cast<float>(event.size.width) / 2, static_cast<float>(event.size.height) / 2);
+					window->setView(view);
 				}
 				else if (event.type == Event::MouseMoved)
 				{
 					mouseCoords = Vector2f(Mouse::getPosition(*window));
-					//mouseCoords = Vector2f(event.mouseMove.x, event.mouseMove.y);
 				}
 				else if (event.type == Event::MouseButtonPressed)
 				{
+					panel.eventHandle(mouseCoords);
 					if (event.mouseButton.button == Mouse::Left) leftMousePressed = true;
 					if (event.mouseButton.button == Mouse::Right) rightMousePressed = true;
 				}
@@ -71,10 +82,9 @@ public:
 			}
 			if (leftMousePressed)
 			{
-				if (storage.checkCollision(panel.headerRect.getPosition(), panel.headerRect.getSize(), mouseCoords, Vector2f(0,0)))
-					panel.setPosition(
-						panel.headerRect.getPosition().x - (oldMouseCoords.x - mouseCoords.x),
-						panel.headerRect.getPosition().y - (oldMouseCoords.y - mouseCoords.y));
+				
+				if (panel.contains(mouseCoords))
+					panel.move(mouseCoords, oldMouseCoords);
 				else
 					drawTiles();
 				
@@ -83,34 +93,29 @@ public:
 			{
 				drawTiles();
 			}
-
+			panel.closeButton.update(mouseCoords);
+			button.update(mouseCoords);
 			oldMouseCoords = mouseCoords;
-			printf("%f   %f\n", mouseCoords.x, mouseCoords.y);
 		}
 	}
 
+	void createInventoryWindow();
 
 	void drawTiles()
 	{
-		for (int i = 0; i < TILES_COUNT_X; i++)
-		{
-			for (int j = 0; j < TILES_COUNT_Y; j++)
-			{
-				if (storage.checkCollision(Vector2f(map->tiles[i][j].x, map->tiles[i][j].y), Vector2f(TILE_SIZE, TILE_SIZE), mouseCoords, Vector2f(0, 0)))
-				{
-					if (rightMousePressed)
-						map->tiles[i][j].backSprite.setTexture(chosenBackTexture);
-					if (leftMousePressed)
-						map->tiles[i][j].backSprite.setTexture(chosenFrontTexture);
-				}
-			}
-		}
+		int x = static_cast<int>(mouseCoords.x) / TILE_SIZE;
+		int y = static_cast<int>(mouseCoords.y) / TILE_SIZE;
+		if (rightMousePressed)
+			map->tiles[x][y].backSprite.setTexture(chosenBackTexture);
+		if (leftMousePressed)
+			map->tiles[x][y].backSprite.setTexture(chosenFrontTexture);
 	}
 
 	void draw()
 	{
 		map->drawMap(*window);
 		panel.draw(*window);
+		button.draw(*window);
 	}
 };
 
