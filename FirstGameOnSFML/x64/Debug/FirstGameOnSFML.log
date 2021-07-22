@@ -1,5 +1,43 @@
-﻿  MapEditor.cpp
+﻿  Debug.cpp
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\Debug.cpp(8,17): warning C4244: =: преобразование "float" в "int", возможна потеря данных
+  Entity.cpp
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\Entity.cpp(16,33): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\Entity.cpp(16,30): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\Entity.cpp(22,24): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\Entity.cpp(22,21): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+  GameMap.cpp
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\GameMap.cpp(20,25): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\GameMap.cpp(20,23): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\GameMap.cpp(27,8): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\GameMap.cpp(28,8): warning C4244: инициализация: преобразование "T" в "int", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\GameMap.cpp(35,20): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\GameMap.cpp(36,20): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\GameMap.cpp(103,59): warning C4305: аргумент: усечение из "double" в "float"
+  MapEditor.cpp
+  Player.cpp
+  Storage.cpp
+  UIButton.cpp
+  UIElement.cpp
   UIPanel.cpp
   Создание кода...
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\Entity.cpp(56): warning C4715: Entity::checkNearbyTiles: значение возвращается не при всех путях выполнения
+  Enemy.cpp
   main.cpp
+  Создание кода...
   FirstGameOnSFML.vcxproj -> C:\Users\RusKom\source\repos\FirstGameOnSFML\x64\Debug\FirstGameOnSFML.exe

@@ -20,12 +20,10 @@ public:
 
 	UIPanel(Vector2f position_, Vector2f size_, Border border, String text_, float headerHeight);
 
-	void close();
-
 	void eventHandle(Vector2f mouseCoords);
 
-	virtual void draw(RenderWindow& window);
+	void additionalDraw(RenderWindow& window);
 
-	void setPosition(Vector2f position_);
+	void setAdditionalPosition();
 };
 

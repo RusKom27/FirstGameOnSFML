@@ -4,7 +4,6 @@
 #include <iostream>
 #include <fstream>
 
-
 #define arraySize(a) (sizeof(a)/sizeof((a)[0]))
 
 using namespace sf;

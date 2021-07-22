@@ -3,6 +3,10 @@
 #include "GameMap.h"
 #include "UIPanel.h"
 #include "UIButton.h"
+#include <boost/filesystem.hpp>
+#include <iterator>
+#include <set>
+
 
 class MapEditor
 {
@@ -23,6 +27,18 @@ private:
 public:
 	RenderWindow* window;
 
+	std::set<boost::filesystem::path> getDirContents(const std::string& dirName)
+	{
+		std::set<boost::filesystem::path> paths;
+		std::copy
+		(boost::filesystem::directory_iterator(dirName)
+			, boost::filesystem::directory_iterator()
+			, std::inserter(paths, paths.end())
+		);
+
+		return paths;
+	}
+
 	MapEditor() 
 	{
 		map = new GameMap();
@@ -40,6 +56,14 @@ public:
 			window->setPosition(Vector2i(0, 0));
 			View view = window->getDefaultView();
 			view.setCenter(Vector2f(0, 0));
+
+			std::set<boost::filesystem::path> paths = getDirContents("Maps\\");
+			std::copy
+			(paths.begin()
+				, paths.end()
+				, std::ostream_iterator<boost::filesystem::path>(std::cout, "\n")
+			);
+
 		}
 	}
 

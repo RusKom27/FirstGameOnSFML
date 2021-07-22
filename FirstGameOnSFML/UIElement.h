@@ -6,7 +6,7 @@
 using namespace sf;
 using namespace std;
 
-enum Border { Thick, Thin };
+enum Border { Thick, Thin, Outline };
 
 class UIElement
 {
@@ -18,6 +18,7 @@ public:
 	Vector2f position;
 	RectangleShape mainRect;
 	Sprite background;
+	bool closed = false;
 
 	Font font;
 	Text text;
@@ -32,9 +33,11 @@ public:
 
 	void setBorder(Border border);
 
-	virtual void setPosition(Vector2f position_);
+	void setPosition(Vector2f position_);
 
-	virtual void close();
+	virtual void setAdditionalPosition();
+
+	void close();
 
 	bool contains(Vector2f mouseCoords);
 
@@ -44,6 +47,8 @@ public:
 
 	void setBackgroundTexture(Texture& texture);
 
-	virtual void draw(RenderWindow& window);
+	virtual void additionalDraw(RenderWindow& window);
+
+	void draw(RenderWindow& window);
 };
 

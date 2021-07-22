@@ -24,7 +24,7 @@ Image Storage::loadImage(string fileName)
 {
 	Image image;
 	if (image.loadFromFile("Images\\" + fileName))
-		cout << "loaded " << fileName << endl;
+		cout << "Loaded " << fileName << endl;
 	else
 		cout << "ERROR loaded " << fileName << endl;
 	return image;

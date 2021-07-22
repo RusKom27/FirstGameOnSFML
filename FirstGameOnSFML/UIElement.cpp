@@ -1,14 +1,8 @@
 #include "UIElement.h"
 
-UIElement::UIElement()
-{
+UIElement::UIElement() {}
 
-}
-
-UIElement::~UIElement()
-{
-
-}
+UIElement::~UIElement() {}
 
 UIElement::UIElement(Vector2f position_, Vector2f size_, Border border, String text_)
 {
@@ -34,35 +28,42 @@ void UIElement::setBorder(Border border)
 	case Thin:
 		storage.getTexturesFromImage(borderTextures, storage.loadImage("UIBorders_Thin.png"));
 		break;
+	case Outline:
+		mainRect.setOutlineThickness(2.f);
+		mainRect.setOutlineColor(Color(mainRect.getFillColor().r - 50, mainRect.getFillColor().g - 50, mainRect.getFillColor().b - 50));
+		break;
 	default:
 		storage.getTexturesFromImage(borderTextures, storage.loadImage("UIBorders_Thin.png"));
 		break;
 	}
+	if (border != Outline)
+	{
+		borders[0] = Sprite(borderTextures[0][0]);
+		borders[1] = Sprite(borderTextures[2][0]);
+		borders[2] = Sprite(borderTextures[0][2]);
+		borders[3] = Sprite(borderTextures[2][2]);
 
-	borders[0] = Sprite(borderTextures[0][0]);
-	borders[1] = Sprite(borderTextures[2][0]);
-	borders[2] = Sprite(borderTextures[0][2]);
-	borders[3] = Sprite(borderTextures[2][2]);
+		borders[4] = Sprite(borderTextures[1][0]);
+		borders[5] = Sprite(borderTextures[2][1]);
+		borders[6] = Sprite(borderTextures[1][2]);
+		borders[7] = Sprite(borderTextures[0][1]);
 
-	borders[4] = Sprite(borderTextures[1][0]);
-	borders[5] = Sprite(borderTextures[2][1]);
-	borders[6] = Sprite(borderTextures[1][2]);
-	borders[7] = Sprite(borderTextures[0][1]);
+		borders[4].setScale(Vector2f(size.x / TILE_SIZE, 1));
+		borders[6].setScale(Vector2f(size.x / TILE_SIZE, 1));
 
-	borders[4].setScale(Vector2f(size.x / TILE_SIZE, 1));
-	borders[6].setScale(Vector2f(size.x / TILE_SIZE, 1));
-
-	borders[5].setScale(Vector2f(1, size.y / TILE_SIZE));
-	borders[7].setScale(Vector2f(1, size.y / TILE_SIZE));
-	
+		borders[5].setScale(Vector2f(1, size.y / TILE_SIZE));
+		borders[7].setScale(Vector2f(1, size.y / TILE_SIZE));
+	}
 }
+
+void UIElement::setAdditionalPosition() {}
 
 void UIElement::setPosition(Vector2f position_)
 {
 	position = position_;
 	background.setPosition(position);
 	mainRect.setPosition(position);
-	text.setPosition(Vector2f(position.x + (size.x / 2) - (text.getString().getSize() * text.getCharacterSize() / 2), position.y + (size.y / 2) - (text.getCharacterSize() / 2)));
+	text.setPosition(Vector2f(position.x + (size.x / 2) - (text.getString().getSize() * 15 / 2), position.y + (size.y / 2) - (25 / 2)));
 
 	borders[0].setPosition(position);
 	borders[1].setPosition(Vector2f(position.x + size.x - TILE_SIZE, position.y));
@@ -72,11 +73,13 @@ void UIElement::setPosition(Vector2f position_)
 	borders[5].setPosition(Vector2f(position.x + size.x - TILE_SIZE, position.y));
 	borders[6].setPosition(Vector2f(position.x, position.y + size.y - TILE_SIZE));
 	borders[7].setPosition(Vector2f(position.x, position.y));
+
+	setAdditionalPosition();
 }
 
 void UIElement::close()
 {
-	delete this;
+	closed = true;
 }
 
 bool UIElement::contains(Vector2f mouseCoords)
@@ -102,11 +105,15 @@ void UIElement::setBackgroundTexture(Texture& texture)
 	background.setTextureRect(IntRect(Vector2i(position), Vector2i(size)));
 }
 
+void UIElement::additionalDraw(RenderWindow& window) {}
+
 void UIElement::draw(RenderWindow& window)
 {
 	window.draw(mainRect);
 	window.draw(background);
 	
+	additionalDraw(window);
+
 	for (int i = 4; i < 8; i++)
 	{
 		window.draw(borders[i]);
