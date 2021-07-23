@@ -1,8 +1,7 @@
 #pragma once
 #include "Storage.h"
 #include "GameMap.h"
-#include "UIPanel.h"
-#include "UIButton.h"
+#include "UIContainer.h"
 #include <boost/filesystem.hpp>
 #include <iterator>
 #include <set>
@@ -21,8 +20,7 @@ private:
 	bool drawCollisions = false;
 	Texture chosenBackTexture;
 	Texture chosenFrontTexture;
-	UIPanel panel;
-	UIButton button;
+	UIContainer container;
 
 public:
 	RenderWindow* window;
@@ -43,9 +41,9 @@ public:
 	{
 		map = new GameMap();
 		map->buildEmptyMap();
-		panel = UIPanel(Vector2f(WIDTH/2, 10), Vector2f(410, 200), Border::Thin, "TEST", 50);
-		button = UIButton(Vector2f(WIDTH, 10), Vector2f(150, 60), Border::Thin, "OK");
-		panel.setBackgroundTexture(map->backTextures[3][0]);
+		container.createPanel(Vector2f(WIDTH / 2, 10), Vector2f(410, 200), Border::Thin, "TEST", true);
+		container.createButton(Vector2f(WIDTH, 10), Vector2f(150, 60), Border::Thin, "OK");
+		//panel.setBackgroundTexture(map->backTextures[3][0]);
 	}
 
 	void createWindow()
@@ -94,7 +92,7 @@ public:
 				}
 				else if (event.type == Event::MouseButtonPressed)
 				{
-					panel.eventHandle(mouseCoords);
+					container.buttonsClickHandler(event, mouseCoords);
 					if (event.mouseButton.button == Mouse::Left) leftMousePressed = true;
 					if (event.mouseButton.button == Mouse::Right) rightMousePressed = true;
 				}
@@ -107,8 +105,10 @@ public:
 			if (leftMousePressed)
 			{
 				
-				if (panel.contains(mouseCoords))
-					panel.move(mouseCoords, oldMouseCoords);
+				if (container.movePanels(mouseCoords, oldMouseCoords))
+				{
+
+				}
 				else
 					drawTiles();
 				
@@ -117,8 +117,10 @@ public:
 			{
 				drawTiles();
 			}
-			panel.closeButton.update(mouseCoords);
-			button.update(mouseCoords);
+
+			container.update(mouseCoords);
+			//panel.closeButton.update(mouseCoords);
+			//button.update(mouseCoords);
 			oldMouseCoords = mouseCoords;
 		}
 	}
@@ -138,8 +140,7 @@ public:
 	void draw()
 	{
 		map->drawMap(*window);
-		panel.draw(*window);
-		button.draw(*window);
+		container.draw(*window);
 	}
 };
 

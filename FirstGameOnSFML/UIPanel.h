@@ -22,7 +22,7 @@ public:
 
 	void eventHandle(Vector2f mouseCoords);
 
-	void additionalDraw(RenderWindow& window);
+	void setAdditionalDraw(RenderWindow& window);
 
 	void setAdditionalPosition();
 };

@@ -2,7 +2,7 @@
 
 UIElement::UIElement() {}
 
-UIElement::~UIElement() {}
+UIElement::~UIElement() { }
 
 UIElement::UIElement(Vector2f position_, Vector2f size_, Border border, String text_)
 {
@@ -56,8 +56,6 @@ void UIElement::setBorder(Border border)
 	}
 }
 
-void UIElement::setAdditionalPosition() {}
-
 void UIElement::setPosition(Vector2f position_)
 {
 	position = position_;
@@ -77,6 +75,8 @@ void UIElement::setPosition(Vector2f position_)
 	setAdditionalPosition();
 }
 
+void UIElement::setAdditionalPosition() {}
+
 void UIElement::close()
 {
 	closed = true;
@@ -90,7 +90,8 @@ bool UIElement::contains(Vector2f mouseCoords)
 
 void UIElement::move(Vector2f mouseCoords, Vector2f oldMouseCoords)
 {
-	setPosition(Vector2f(position.x - (oldMouseCoords.x - mouseCoords.x), position.y - (oldMouseCoords.y - mouseCoords.y)));
+	if (draggable)
+		setPosition(Vector2f(position.x - (oldMouseCoords.x - mouseCoords.x), position.y - (oldMouseCoords.y - mouseCoords.y)));
 }
 
 void UIElement::setColor(Color color)
@@ -105,14 +106,12 @@ void UIElement::setBackgroundTexture(Texture& texture)
 	background.setTextureRect(IntRect(Vector2i(position), Vector2i(size)));
 }
 
-void UIElement::additionalDraw(RenderWindow& window) {}
-
 void UIElement::draw(RenderWindow& window)
 {
 	window.draw(mainRect);
 	window.draw(background);
 	
-	additionalDraw(window);
+	setAdditionalDraw(window);
 
 	for (int i = 4; i < 8; i++)
 	{
@@ -125,3 +124,5 @@ void UIElement::draw(RenderWindow& window)
 	text.setFont(font);
 	window.draw(text);
 }
+
+void UIElement::setAdditionalDraw(RenderWindow& window) {}

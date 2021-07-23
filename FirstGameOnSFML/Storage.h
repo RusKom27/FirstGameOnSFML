@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <fstream>
+#include <functional>
 
 #define arraySize(a) (sizeof(a)/sizeof((a)[0]))
 

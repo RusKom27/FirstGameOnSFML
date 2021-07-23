@@ -2,12 +2,12 @@
 
 UIPanel::UIPanel() : UIElement() {}
 
-UIPanel::~UIPanel() {}
+UIPanel::~UIPanel() { }
 
 UIPanel::UIPanel(Vector2f position_, Vector2f size_, Border border, String text_, float headerHeight) : UIElement(position_, size_, border, text_)
 {
-	closeButton = UIButton(Vector2f(0, 0), Vector2f(30, 30), Border::Outline, "x");
-	
+	void (*customFunction)() = setAdditionalPosition;
+	closeButton = UIButton(Vector2f(0, 0), Vector2f(30, 30), Border::Outline, "x", customFunction);
 	headerRect = RectangleShape(Vector2f(size.x, headerHeight));
 	setPosition(position);
 	headerRect.setFillColor(Color(mainRect.getFillColor().r - 30, mainRect.getFillColor().g - 30, mainRect.getFillColor().b - 30));
@@ -24,11 +24,10 @@ void UIPanel::setAdditionalPosition()
 
 void UIPanel::eventHandle(Vector2f mouseCoords)
 {
-	if (closeButton.contains(mouseCoords))
-		close();
+	closeButton.click(mouseCoords);
 }
 
-void UIPanel::additionalDraw(RenderWindow& window)
+void UIPanel::setAdditionalDraw(RenderWindow& window)
 {
 	window.draw(headerRect);
 	closeButton.draw(window);

@@ -11,34 +11,20 @@ class UIButton : public UIElement
 {
 public:
 	RectangleShape filter;
+	static void (*customFunction)();
 
-	UIButton() : UIElement() {}
+	UIButton();
 
-	~UIButton() {}
+	~UIButton();
 
-	UIButton(Vector2f position_, Vector2f size_, Border border, String text_) : UIElement(position_, size_, border, text_)
-	{
-		filter = RectangleShape(mainRect.getSize());
-		filter.setFillColor(Color(200, 200, 200, 0));
-		setPosition(position);
-	}
+	UIButton(Vector2f position_, Vector2f size_, Border border, String text_, void (*customFunction_)());
 
-	void setAdditionalPosition()
-	{
-		filter.setPosition(Vector2f(position.x, position.y));
-	}
+	void setAdditionalPosition();
 
-	void update(Vector2f mouseCoords)
-	{
-		if (contains(mouseCoords))
-			filter.setFillColor(Color(200, 200, 200, 100));
-		else
-			filter.setFillColor(Color(200, 200, 200, 0));
-	}
+	void click(Vector2f mouseCoords);
 
-	void additionalDraw(RenderWindow& window) 
-	{
-		window.draw(filter);
-	}
+	void update(Vector2f mouseCoords);
+
+	void setAdditionalDraw(RenderWindow& window);
 };
 

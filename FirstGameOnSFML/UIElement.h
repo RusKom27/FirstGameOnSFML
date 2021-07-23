@@ -19,6 +19,7 @@ public:
 	RectangleShape mainRect;
 	Sprite background;
 	bool closed = false;
+	bool draggable = false;
 
 	Font font;
 	Text text;
@@ -47,7 +48,7 @@ public:
 
 	void setBackgroundTexture(Texture& texture);
 
-	virtual void additionalDraw(RenderWindow& window);
+	virtual void setAdditionalDraw(RenderWindow& window);
 
 	void draw(RenderWindow& window);
 };
