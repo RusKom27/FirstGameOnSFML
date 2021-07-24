@@ -7,21 +7,28 @@
 using namespace sf;
 using namespace std;
 
+enum ButtonEvent
+{
+	None,
+	Close
+};
+
+
 class UIButton : public UIElement
 {
 public:
 	RectangleShape filter;
-	static void (*customFunction)();
+	ButtonEvent buttonEvent;
 
 	UIButton();
 
 	~UIButton();
 
-	UIButton(Vector2f position_, Vector2f size_, Border border, String text_, void (*customFunction_)());
+	UIButton(Vector2f position_, Vector2f size_, Border border, String text_, ButtonEvent buttonEvent_, bool draggable_);
 
 	void setAdditionalPosition();
 
-	void click(Vector2f mouseCoords);
+	bool click(Vector2f mouseCoords);
 
 	void update(Vector2f mouseCoords);
 

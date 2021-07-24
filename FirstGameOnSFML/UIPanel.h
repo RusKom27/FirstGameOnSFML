@@ -12,17 +12,19 @@ class UIPanel : public UIElement
 {
 public:
 	RectangleShape headerRect;
-	UIButton closeButton;
+	vector<UIButton> buttons;
 
 	UIPanel();
 
 	~UIPanel();
 
-	UIPanel(Vector2f position_, Vector2f size_, Border border, String text_, float headerHeight);
+	UIPanel(Vector2f position_, Vector2f size_, Border border, String text_, float headerHeight, bool draggable_);
 
 	void eventHandle(Vector2f mouseCoords);
 
 	void setAdditionalDraw(RenderWindow& window);
+
+	virtual void setSubDraw(RenderWindow& window);
 
 	void setAdditionalPosition();
 };

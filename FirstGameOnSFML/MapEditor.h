@@ -2,10 +2,18 @@
 #include "Storage.h"
 #include "GameMap.h"
 #include "UIContainer.h"
+#include "UIInventoryPanel.h"
 #include <boost/filesystem.hpp>
 #include <iterator>
 #include <set>
 
+
+struct TileInfo
+{
+	string path;
+	Vector2f frontTextureCoord;
+	Vector2f backTextureCoord;
+};
 
 class MapEditor
 {
@@ -25,14 +33,10 @@ private:
 public:
 	RenderWindow* window;
 
-	std::set<boost::filesystem::path> getDirContents(const std::string& dirName)
+	set<boost::filesystem::path> getDirContents(const string& dirName)
 	{
-		std::set<boost::filesystem::path> paths;
-		std::copy
-		(boost::filesystem::directory_iterator(dirName)
-			, boost::filesystem::directory_iterator()
-			, std::inserter(paths, paths.end())
-		);
+		set<boost::filesystem::path> paths;
+		copy(boost::filesystem::directory_iterator(dirName), boost::filesystem::directory_iterator(), inserter(paths, paths.end()));
 
 		return paths;
 	}
@@ -41,9 +45,12 @@ public:
 	{
 		map = new GameMap();
 		map->buildEmptyMap();
-		container.createPanel(Vector2f(WIDTH / 2, 10), Vector2f(410, 200), Border::Thin, "TEST", true);
-		container.createButton(Vector2f(WIDTH, 10), Vector2f(150, 60), Border::Thin, "OK");
-		//panel.setBackgroundTexture(map->backTextures[3][0]);
+		//container.createPanel(Vector2f(WIDTH / 2, 10), Vector2f(410, 200), Border::Thin, "TEST", true);
+		container.createButton(Vector2f(WIDTH, 10), Vector2f(150, 60), Border::Thin, "OK", ButtonEvent::None);
+		vector<string> maps = getTileMaps();
+		
+		UIInventoryPanel inventory = UIInventoryPanel(Vector2f(10, 10), Vector2f(200, 600), Border::Thin, maps[2], 50, true);
+		container.panels.push_back(inventory);
 	}
 
 	void createWindow()
@@ -54,15 +61,29 @@ public:
 			window->setPosition(Vector2i(0, 0));
 			View view = window->getDefaultView();
 			view.setCenter(Vector2f(0, 0));
-
-			std::set<boost::filesystem::path> paths = getDirContents("Maps\\");
-			std::copy
-			(paths.begin()
-				, paths.end()
-				, std::ostream_iterator<boost::filesystem::path>(std::cout, "\n")
-			);
-
 		}
+	}
+
+	vector<string> getTileMaps()
+	{
+		vector<string> maps;
+		set<boost::filesystem::path> paths = getDirContents("Images\\");
+		for (boost::filesystem::path path : paths)
+		{
+			maps.push_back(path.string());
+		}
+		return maps;
+	}
+
+
+	void drawTiles()
+	{
+		int x = static_cast<int>(mouseCoords.x) / TILE_SIZE;
+		int y = static_cast<int>(mouseCoords.y) / TILE_SIZE;
+		if (rightMousePressed)
+			map->tiles[x][y].backSprite.setTexture(chosenBackTexture);
+		if (leftMousePressed)
+			map->tiles[x][y].backSprite.setTexture(chosenFrontTexture);
 	}
 
 	void update(float time)
@@ -119,22 +140,8 @@ public:
 			}
 
 			container.update(mouseCoords);
-			//panel.closeButton.update(mouseCoords);
-			//button.update(mouseCoords);
 			oldMouseCoords = mouseCoords;
 		}
-	}
-
-	void createInventoryWindow();
-
-	void drawTiles()
-	{
-		int x = static_cast<int>(mouseCoords.x) / TILE_SIZE;
-		int y = static_cast<int>(mouseCoords.y) / TILE_SIZE;
-		if (rightMousePressed)
-			map->tiles[x][y].backSprite.setTexture(chosenBackTexture);
-		if (leftMousePressed)
-			map->tiles[x][y].backSprite.setTexture(chosenFrontTexture);
 	}
 
 	void draw()

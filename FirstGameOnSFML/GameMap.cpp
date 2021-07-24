@@ -3,8 +3,8 @@
 GameMap::GameMap()
 {
 	setGrid();
-	storage.getTexturesFromImage(backTextures, storage.loadImage("BackTileSet.png"));
-	storage.getTexturesFromImage(frontTextures, storage.loadImage("FrontTileSet.png"));
+	storage.getTexturesFromImage(backTextures, storage.loadImage("Images\\BackTileSet.png"));
+	storage.getTexturesFromImage(frontTextures, storage.loadImage("Images\\FrontTileSet.png"));
 };
 
 void GameMap::setGrid()
@@ -77,17 +77,14 @@ void GameMap::loadMap(const char* name)
 	if (eResult == 0) cout << "Loaded map: " << name << endl;
 	else cout << "Error "<< XMLError( eResult) <<": " << name << endl;
 
-	//doc.Print();
 	XMLElement* root = doc.FirstChildElement();
 	XMLElement* row = root->FirstChildElement("row");
 	
 	while (row)
 	{
 		XMLElement* tile = row->FirstChildElement("tile");
-		//printf("Row:%i\tBackId:\tFrontId:\tX:\tY:\n", i);
 		while (tile)
 		{
-			//printf("\t%i\t%i\t\t%i\t%i\n", tile->IntAttribute("back"), tile->IntAttribute("front"), i, j);
 			switch (tile->IntAttribute("back"))
 			{
 			case 1:
@@ -120,7 +117,6 @@ void GameMap::loadMap(const char* name)
 			tile = tile->NextSiblingElement("tile");
 			j++;
 		}
-		//printf("\n");
 		row = row->NextSiblingElement("row");
 		i++;
 		j = 0;

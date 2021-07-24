@@ -19,14 +19,13 @@ public:
 
 	void createPanel(Vector2f position_, Vector2f size_, Border border_, string headerText_, bool draggable_)
 	{
-		UIPanel panel = UIPanel(position_, size_, border_, headerText_, TILE_SIZE);
-		panel.draggable = draggable_;
+		UIPanel panel = UIPanel(position_, size_, border_, headerText_, TILE_SIZE, draggable_);
 		panels.push_back(panel);
 	}
 
-	void createButton(Vector2f position_, Vector2f size_, Border border_, string text_)
+	void createButton(Vector2f position_, Vector2f size_, Border border_, string text_, ButtonEvent buttonEvent_)
 	{
-		UIButton button = UIButton(position_, size_, border_, text_, [] { cout << "OK\n"; });
+		UIButton button = UIButton(position_, size_, border_, text_, buttonEvent_, false);
 		buttons.push_back(button);
 	}
 
@@ -38,7 +37,17 @@ public:
 		}
 		for (UIButton& button : buttons)
 		{
-			//button.click();
+			if (button.click(mouseCoords))
+			{
+				switch (button.buttonEvent)
+				{
+				case ButtonEvent::None:
+					cout << "Click\n";
+					break;
+				default:
+					break;
+				}
+			}
 		}
 	}
 
@@ -52,6 +61,7 @@ public:
 				return true;
 			}
 		}
+		return false;
 	}
 
 	void update(Vector2f mouseCoords)
@@ -62,13 +72,12 @@ public:
 		}
 		for (int i = 0; i < panels.size(); i++)
 		{
-			panels[i].closeButton.update(mouseCoords);
+			for (int j = 0; j < panels[i].buttons.size(); j++)
+			{
+				panels[i].buttons[j].update(mouseCoords);
+			}
 			if (panels[i].closed)
 				panels.erase(panels.begin() + i);
-		}
-		for (UIPanel& panel : panels)
-		{
-			
 		}
 	}
 

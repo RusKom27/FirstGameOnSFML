@@ -27,7 +27,7 @@ public:
 
 	bool checkCollision(Vector2f obj1, Vector2f obj1Size, Vector2f obj2, Vector2f obj2Size);
 	Vector2f getLocalCoords(Vector2f obj1, Vector2f obj1Size, Vector2f obj2, Vector2f obj2Size);
-	Image loadImage(string fileName);
+	Image loadImage(string path);
 	void showText(RenderWindow& window, string txt, Vector2f position, int fontSize, Color color);
-	int getTexturesFromImage(Texture**& textures, Image image);
+	Vector2f getTexturesFromImage(Texture**& textures, Image image);
 };

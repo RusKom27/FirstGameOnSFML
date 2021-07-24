@@ -11,9 +11,10 @@ enum Border { Thick, Thin, Outline };
 class UIElement
 {
 private:
-	Storage storage;
+	
 	Texture** borderTextures;
 public:
+	Storage storage;
 	Vector2f size;
 	Vector2f position;
 	RectangleShape mainRect;
@@ -30,7 +31,7 @@ public:
 
 	virtual ~UIElement();
 
-	UIElement(Vector2f position_, Vector2f size_, Border border, String text_);
+	UIElement(Vector2f position_, Vector2f size_, Border border, String text_, bool draggable_);
 
 	void setBorder(Border border);
 

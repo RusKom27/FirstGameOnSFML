@@ -20,13 +20,13 @@ Vector2f Storage::getLocalCoords(Vector2f obj1, Vector2f obj1Size, Vector2f obj2
 }
 
 
-Image Storage::loadImage(string fileName)
+Image Storage::loadImage(string path)
 {
 	Image image;
-	if (image.loadFromFile("Images\\" + fileName))
-		cout << "Loaded " << fileName << endl;
+	if (image.loadFromFile(path))
+		cout << "Loaded " << path << endl;
 	else
-		cout << "ERROR loaded " << fileName << endl;
+		cout << "ERROR loaded " << path << endl;
 	return image;
 }
 
@@ -38,7 +38,7 @@ void Storage::showText(RenderWindow& window, string txt, Vector2f position, int 
 	window.draw(text);
 }
 
-int Storage::getTexturesFromImage(Texture**& textures,Image image)
+Vector2f Storage::getTexturesFromImage(Texture**& textures,Image image)
 {
 	int texturesCountX = image.getSize().x / TILE_SIZE;
 	int texturesCountY = image.getSize().y / TILE_SIZE;
@@ -51,6 +51,6 @@ int Storage::getTexturesFromImage(Texture**& textures,Image image)
 			textures[i][j].loadFromImage(image, IntRect(TILE_SIZE * i, TILE_SIZE * j, TILE_SIZE, TILE_SIZE));
 		}
 	}
-	return texturesCountX * texturesCountY;
+	return Vector2f(texturesCountX, texturesCountY);
 }
 

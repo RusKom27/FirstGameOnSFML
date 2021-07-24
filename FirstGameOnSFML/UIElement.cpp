@@ -4,9 +4,10 @@ UIElement::UIElement() {}
 
 UIElement::~UIElement() { }
 
-UIElement::UIElement(Vector2f position_, Vector2f size_, Border border, String text_)
+UIElement::UIElement(Vector2f position_, Vector2f size_, Border border, String text_, bool draggable_)
 {
 	position = position_;
+	draggable = draggable_;
 	size = size_;
 	font.loadFromFile("Fonts\\PixelFont.ttf");
 	text = Text(text_, font, 20);
@@ -23,17 +24,17 @@ void UIElement::setBorder(Border border)
 	switch (border)
 	{
 	case Thick:
-		storage.getTexturesFromImage(borderTextures, storage.loadImage("UIBorders_Thick.png"));
+		storage.getTexturesFromImage(borderTextures, storage.loadImage("Images\\UIBorders_Thick.png"));
 		break;
 	case Thin:
-		storage.getTexturesFromImage(borderTextures, storage.loadImage("UIBorders_Thin.png"));
+		storage.getTexturesFromImage(borderTextures, storage.loadImage("Images\\UIBorders_Thin.png"));
 		break;
 	case Outline:
 		mainRect.setOutlineThickness(2.f);
 		mainRect.setOutlineColor(Color(mainRect.getFillColor().r - 50, mainRect.getFillColor().g - 50, mainRect.getFillColor().b - 50));
 		break;
 	default:
-		storage.getTexturesFromImage(borderTextures, storage.loadImage("UIBorders_Thin.png"));
+		storage.getTexturesFromImage(borderTextures, storage.loadImage("Images\\UIBorders_Thin.png"));
 		break;
 	}
 	if (border != Outline)

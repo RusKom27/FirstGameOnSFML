@@ -63,6 +63,9 @@
     <ClCompile Include="UIContainer.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="UIInventoryPanel.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Storage.h">
@@ -112,6 +115,9 @@
     </ClInclude>
     <ClInclude Include="boost\filesystem\detail\utf8_codecvt_facet.hpp">
       <Filter>Исходные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="UIInventoryPanel.h">
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
