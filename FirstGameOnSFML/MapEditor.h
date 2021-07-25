@@ -45,12 +45,14 @@ public:
 	{
 		map = new GameMap();
 		map->buildEmptyMap();
-		//container.createPanel(Vector2f(WIDTH / 2, 10), Vector2f(410, 200), Border::Thin, "TEST", true);
-		container.createButton(Vector2f(WIDTH, 10), Vector2f(150, 60), Border::Thin, "OK", ButtonEvent::None);
 		vector<string> maps = getTileMaps();
-		
-		UIInventoryPanel inventory = UIInventoryPanel(Vector2f(10, 10), Vector2f(200, 600), Border::Thin, maps[2], 50, true);
-		container.panels.push_back(inventory);
+		for (int i = 0; i < maps.size(); i++)
+		{
+			container.buttons.push_back(UIButton(Vector2f(WIDTH, 60 * i), Vector2f(150, 60), Border::Thin, to_string(i), ButtonEvent::None, false));
+		}
+
+		UIInventoryPanel inventory = UIInventoryPanel(Vector2f(10, 10), Vector2f(200, 600), Border::Thin, maps[0], 50, 10, true);
+		container.inventoryPanels.push_back(inventory);
 	}
 
 	void createWindow()

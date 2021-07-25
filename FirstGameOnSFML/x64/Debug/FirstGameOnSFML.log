@@ -1,5 +1,13 @@
 ﻿  MapEditor.cpp
-  UIInventoryPanel.cpp
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\MapEditor.h(51,60): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
   main.cpp
-  Создание кода...
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\MapEditor.h(51,60): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
   FirstGameOnSFML.vcxproj -> C:\Users\RusKom\source\repos\FirstGameOnSFML\x64\Debug\FirstGameOnSFML.exe

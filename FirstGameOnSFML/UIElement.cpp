@@ -100,9 +100,9 @@ void UIElement::setColor(Color color)
 	mainRect.setFillColor(color);
 }
 
-void UIElement::setBackgroundTexture(Texture& texture)
+void UIElement::setBackgroundTexture(Texture& texture, bool repeated)
 {
-	texture.setRepeated(true);
+	texture.setRepeated(repeated);
 	background.setTexture(texture, true);
 	background.setTextureRect(IntRect(Vector2i(position), Vector2i(size)));
 }

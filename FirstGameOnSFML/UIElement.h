@@ -47,7 +47,7 @@ public:
 
 	void setColor(Color color);
 
-	void setBackgroundTexture(Texture& texture);
+	void setBackgroundTexture(Texture& texture, bool repeated);
 
 	virtual void setAdditionalDraw(RenderWindow& window);
 

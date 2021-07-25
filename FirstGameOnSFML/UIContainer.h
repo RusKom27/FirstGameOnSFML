@@ -3,6 +3,7 @@
 #include <iostream>
 #include "Storage.h"
 #include "UIPanel.h"
+#include "UIInventoryPanel.h"
 #include "UIButton.h"
 
 using namespace sf;
@@ -14,20 +15,9 @@ class UIContainer
 public:
 	vector<UIButton> buttons;
 	vector<UIPanel> panels;
+	vector<UIInventoryPanel> inventoryPanels;
 
 	UIContainer() {}
-
-	void createPanel(Vector2f position_, Vector2f size_, Border border_, string headerText_, bool draggable_)
-	{
-		UIPanel panel = UIPanel(position_, size_, border_, headerText_, TILE_SIZE, draggable_);
-		panels.push_back(panel);
-	}
-
-	void createButton(Vector2f position_, Vector2f size_, Border border_, string text_, ButtonEvent buttonEvent_)
-	{
-		UIButton button = UIButton(position_, size_, border_, text_, buttonEvent_, false);
-		buttons.push_back(button);
-	}
 
 	void buttonsClickHandler(Event event, Vector2f mouseCoords)
 	{
@@ -35,6 +25,11 @@ public:
 		{
 			panel.eventHandle(mouseCoords);
 		}
+		for (UIInventoryPanel& inventoryPanel : inventoryPanels)
+		{
+			inventoryPanel.eventHandle(mouseCoords);
+		}
+
 		for (UIButton& button : buttons)
 		{
 			if (button.click(mouseCoords))
@@ -61,6 +56,14 @@ public:
 				return true;
 			}
 		}
+		for (UIInventoryPanel& inventoryPanel : inventoryPanels)
+		{
+			if (inventoryPanel.contains(mouseCoords))
+			{
+				inventoryPanel.move(mouseCoords, oldMouseCoords);
+				return true;
+			}
+		}
 		return false;
 	}
 
@@ -72,12 +75,15 @@ public:
 		}
 		for (int i = 0; i < panels.size(); i++)
 		{
-			for (int j = 0; j < panels[i].buttons.size(); j++)
-			{
-				panels[i].buttons[j].update(mouseCoords);
-			}
+			panels[i].update(mouseCoords);
 			if (panels[i].closed)
 				panels.erase(panels.begin() + i);
+		}
+		for (int i = 0; i < inventoryPanels.size(); i++)
+		{
+			inventoryPanels[i].update(mouseCoords);
+			if (inventoryPanels[i].closed)
+				inventoryPanels.erase(inventoryPanels.begin() + i);
 		}
 	}
 
@@ -90,6 +96,10 @@ public:
 		for (UIPanel& panel : panels)
 		{
 			panel.draw(window);
+		}
+		for (UIInventoryPanel& inventoryPanel : inventoryPanels)
+		{
+			inventoryPanel.draw(window);
 		}
 	}
 };

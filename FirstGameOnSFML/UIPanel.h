@@ -12,7 +12,8 @@ class UIPanel : public UIElement
 {
 public:
 	RectangleShape headerRect;
-	vector<UIButton> buttons;
+	UIButton closeButton;
+	vector<vector<UIButton>> buttons;
 
 	UIPanel();
 
@@ -21,10 +22,10 @@ public:
 	UIPanel(Vector2f position_, Vector2f size_, Border border, String text_, float headerHeight, bool draggable_);
 
 	void eventHandle(Vector2f mouseCoords);
+	
+	void update(Vector2f mouseCoords);
 
-	void setAdditionalDraw(RenderWindow& window);
-
-	virtual void setSubDraw(RenderWindow& window);
+	virtual void setAdditionalDraw(RenderWindow& window);
 
 	void setAdditionalPosition();
 };
