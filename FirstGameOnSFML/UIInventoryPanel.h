@@ -5,6 +5,7 @@
 #include "UIPanel.h"
 #include "UIButton.h"
 
+
 using namespace sf;
 using namespace std;
 
@@ -14,6 +15,7 @@ public:
 	Texture** textures;
 	Vector2f buttonsCount;
 	float whiteSpace;
+	vector<vector<UIButton>> buttons;
 
 	UIInventoryPanel(Vector2f position_, Vector2f size_, Border border, String text_, float headerHeight, float whiteSpace_, bool draggable_) : UIPanel(position_, size_, border, text_, headerHeight, draggable_)
 	{
@@ -25,7 +27,7 @@ public:
 		setBorder(border);
 		setButtons();
 		setPosition(position);
-		
+
 	}
 
 	void setAdditionalPosition()
@@ -36,7 +38,6 @@ public:
 			{
 				buttons[i][j].setPosition(Vector2f(position.x + i * TILE_SIZE + i * whiteSpace + whiteSpace, position.y + j * TILE_SIZE + headerRect.getSize().y + j * whiteSpace + whiteSpace));
 				buttons[i][j].background.setTexture(textures[i][j]);
-				//buttons[i][j].setBackgroundTexture(textures[i][j], false);
 			}
 		}
 		headerRect.setPosition(Vector2f(position.x, position.y));
@@ -44,6 +45,63 @@ public:
 		closeButton.setPosition(Vector2f(position.x + size.x - closeButton.size.x - 10, position.y + 10));
 	}
 
+	void eventHandle(Vector2f mouseCoords, Vector2f& chosenTexture, string& chosenTileSet)
+	{
+		if (closeButton.click(mouseCoords))
+		{
+			switch (closeButton.buttonEvent)
+			{
+			case ButtonEvent::Close:
+				close();
+				break;
+			default:
+				break;
+			}
+		}
+		for (int i = 0; i < buttons.size(); i++)
+		{
+			for (int j = 0; j < buttons[i].size(); j++)
+			{
+				if (buttons[i][j].click(mouseCoords))
+				{
+					switch (buttons[i][j].buttonEvent)
+					{
+					case ButtonEvent::SetTexture:
+						chosenTexture = Vector2f(i,j);
+						chosenTileSet = text.getString();
+						break;
+					default:
+						break;
+					}
+				}
+			}
+		}
+	}
+
+	void update(Vector2f mouseCoords)
+	{
+		closeButton.update(mouseCoords);
+		for (vector<UIButton>& row : buttons)
+		{
+			for (UIButton& button : row)
+			{
+				button.update(mouseCoords);
+			}
+		}
+	}
+
+	void setAdditionalDraw(RenderWindow& window)
+	{
+		window.draw(headerRect);
+		closeButton.draw(window);
+		for (vector<UIButton>& row : buttons)
+		{
+			for (UIButton& button : row)
+			{
+				button.draw(window);
+			}
+		}
+	}
 
 	void setButtons()
 	{
@@ -58,12 +116,10 @@ public:
 			for (int j = 0; j < buttonsCount.y; j++)
 			{
 				y = j * TILE_SIZE;
-				cout << i << "\t" << j << endl;
-				buttons[i].push_back(UIButton(Vector2f(position.x + x + i * 2, position.y + y + j * 2), Vector2f(TILE_SIZE, TILE_SIZE), Border::Outline, "", ButtonEvent::None, true));
+				buttons[i].push_back(UIButton(Vector2f(position.x + x + i * 2, position.y + y + j * 2), Vector2f(TILE_SIZE, TILE_SIZE), Border::Outline, "", ButtonEvent::SetTexture, true));
 				
 			}
 		}
-
 	}
 };
 

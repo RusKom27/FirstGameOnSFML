@@ -54,3 +54,8 @@ Vector2f Storage::getTexturesFromImage(Texture**& textures,Image image)
 	return Vector2f(texturesCountX, texturesCountY);
 }
 
+float Storage::lerp(float a, float b, float f)
+{
+	return (a * (1.0f - f)) + (b * f);
+}
+

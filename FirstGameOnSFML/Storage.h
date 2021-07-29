@@ -30,4 +30,5 @@ public:
 	Image loadImage(string path);
 	void showText(RenderWindow& window, string txt, Vector2f position, int fontSize, Color color);
 	Vector2f getTexturesFromImage(Texture**& textures, Image image);
+	float lerp(float a, float b, float f);
 };

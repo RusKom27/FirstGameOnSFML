@@ -10,7 +10,9 @@ using namespace std;
 enum ButtonEvent
 {
 	None,
-	Close
+	Close,
+	SetTexture,
+	SetTileSet
 };
 
 

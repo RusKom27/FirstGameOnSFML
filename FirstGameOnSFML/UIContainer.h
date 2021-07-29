@@ -19,7 +19,7 @@ public:
 
 	UIContainer() {}
 
-	void buttonsClickHandler(Event event, Vector2f mouseCoords)
+	void buttonsClickHandler(Event event, Vector2f mouseCoords, Vector2f& chosenTexture, string& chosenTileSet)
 	{
 		for (UIPanel& panel : panels)
 		{
@@ -27,7 +27,7 @@ public:
 		}
 		for (UIInventoryPanel& inventoryPanel : inventoryPanels)
 		{
-			inventoryPanel.eventHandle(mouseCoords);
+			inventoryPanel.eventHandle(mouseCoords, chosenTexture, chosenTileSet);
 		}
 
 		for (UIButton& button : buttons)
@@ -36,7 +36,7 @@ public:
 			{
 				switch (button.buttonEvent)
 				{
-				case ButtonEvent::None:
+				case ButtonEvent::SetTileSet:
 					cout << "Click\n";
 					break;
 				default:
@@ -46,13 +46,14 @@ public:
 		}
 	}
 
-	bool movePanels(Vector2f mouseCoords, Vector2f oldMouseCoords)
+	bool movePanels(Vector2f mouseCoords, Vector2f oldMouseCoords, bool leftMouse, bool rightMouse)
 	{
 		for (UIPanel& panel : panels)
 		{
 			if (panel.contains(mouseCoords))
 			{
-				panel.move(mouseCoords, oldMouseCoords);
+				if (leftMouse)
+					panel.move(mouseCoords, oldMouseCoords);
 				return true;
 			}
 		}
@@ -60,7 +61,8 @@ public:
 		{
 			if (inventoryPanel.contains(mouseCoords))
 			{
-				inventoryPanel.move(mouseCoords, oldMouseCoords);
+				if (leftMouse)
+					inventoryPanel.move(mouseCoords, oldMouseCoords);
 				return true;
 			}
 		}

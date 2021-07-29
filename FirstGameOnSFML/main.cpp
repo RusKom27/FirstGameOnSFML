@@ -15,7 +15,8 @@ int main()
 
 	RenderWindow window(VideoMode(WIDTH, HEIGHT), "SFML RPG", Style::Default);
 	View view = window.getDefaultView();
-	view.setCenter(Vector2f(0, 0));
+	view.setCenter(0,0);
+	view.setSize(static_cast<float>(WIDTH / 1.5f), static_cast<float>(HEIGHT / 1.5f));
 	window.setPosition(Vector2i(1500, 0));
 	window.setFramerateLimit(60);
 
@@ -34,6 +35,7 @@ int main()
 	
 	while (window.isOpen())
 	{
+		
 		time = clock.getElapsedTime().asSeconds();
 
 		Event event;
@@ -47,8 +49,8 @@ int main()
 			}
 			else if (event.type == Event::Resized)
 			{
-				view.setSize(static_cast<float>(event.size.width), static_cast<float>(event.size.height));
-				view.setCenter(static_cast<float>(event.size.width) / 2, static_cast<float>(event.size.height) / 2);
+				view.setSize(static_cast<float>(event.size.width) / 1.5f, static_cast<float>(event.size.height) / 1.5f);
+				//view.setCenter(static_cast<float>(event.size.width) / 2, static_cast<float>(event.size.height) / 2);
 				window.setView(view);
 			}
 			else if (event.type == Event::MouseMoved)
@@ -65,11 +67,13 @@ int main()
 			}
 		}
 		
-
 		window.clear(Color(25, 25, 25, 0));
 
 		mapEditor.update(time);
 		map.player.update(time);
+
+		view.setCenter(map.player.x + TILE_SIZE / 2, map.player.y + TILE_SIZE / 2);
+		window.setView(view);
 
 		map.drawMap(window);
 

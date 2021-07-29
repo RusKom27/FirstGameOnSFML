@@ -13,7 +13,6 @@ class UIPanel : public UIElement
 public:
 	RectangleShape headerRect;
 	UIButton closeButton;
-	vector<vector<UIButton>> buttons;
 
 	UIPanel();
 

@@ -23,19 +23,11 @@ void UIPanel::setAdditionalPosition()
 void UIPanel::update(Vector2f mouseCoords)
 {
 	closeButton.update(mouseCoords);
-	for (vector<UIButton>& row : buttons)
-	{
-		for (UIButton& button : row)
-		{
-			button.update(mouseCoords);
-		}
-	}
 }
 
 
 void UIPanel::eventHandle(Vector2f mouseCoords)
 {
-
 	if (closeButton.click(mouseCoords))
 	{
 		switch (closeButton.buttonEvent)
@@ -46,41 +38,11 @@ void UIPanel::eventHandle(Vector2f mouseCoords)
 		default:
 			break;
 		}
-	}
-	for (int i = 0; i < buttons.size(); i++)
-	{
-		for (int j = 0; j < buttons[i].size(); j++)
-		{
-			if (buttons[i][j].click(mouseCoords))
-			{
-				switch (buttons[i][j].buttonEvent)
-				{
-				case ButtonEvent::Close:
-					close();
-					break;
-				case ButtonEvent::None:
-					cout << i << "\t" << j << endl;
-					break;
-				default:
-					break;
-				}
-			}
-		}
-	}
-
-	
+	}	
 }
 
 void UIPanel::setAdditionalDraw(RenderWindow& window)
 {
 	window.draw(headerRect);
 	closeButton.draw(window);
-	for (vector<UIButton>& row : buttons)
-	{
-		for (UIButton& button : row)
-		{
-			button.draw(window);
-		}
-			
-	}
 }
