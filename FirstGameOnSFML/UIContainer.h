@@ -12,6 +12,8 @@ using namespace std;
 
 class UIContainer
 {
+private:
+	Storage storage;
 public:
 	vector<UIButton> buttons;
 	vector<UIPanel> panels;
@@ -19,15 +21,11 @@ public:
 
 	UIContainer() {}
 
-	bool buttonsClickHandler(Event event, Vector2f mouseCoords, Vector2f& chosenTexture, int& chosenTileSet, vector<string> maps)
+	bool buttonsClickHandler(Vector2f mouseCoords)
 	{
 		for (UIPanel& panel : panels)
 		{
 			panel.eventHandle(mouseCoords);
-		}
-		for (UIInventoryPanel& inventoryPanel : inventoryPanels)
-		{
-			if (inventoryPanel.eventHandle(mouseCoords, chosenTexture, chosenTileSet)) return true;
 		}
 
 		for (int i = 0; i < buttons.size(); i++)
@@ -37,13 +35,22 @@ public:
 				switch (buttons[i].buttonEvent)
 				{
 				case ButtonEvent::SetTileSet:
-					inventoryPanels.push_back(UIInventoryPanel(Vector2f(10, 10), Vector2f(200, 600), Border::Thin, maps[i], maps, i, 50, 10, true));
+					inventoryPanels.push_back(UIInventoryPanel(Vector2f(10, 10), Vector2f(200, 600), Border::Thin, storage.maps[i], i, 50, 10, true));
 					break;
 				default:
 					break;
 				}
 				return true;
 			}
+		}
+		return false;
+	}
+
+	bool inventoryButtonsClickHandler(Vector2f mouseCoords, Vector2f& chosenTexture, int& chosenTileSet)
+	{
+		for (UIInventoryPanel& inventoryPanel : inventoryPanels)
+		{
+			if (inventoryPanel.eventHandle(mouseCoords, chosenTexture, chosenTileSet)) return true;
 		}
 		return false;
 	}

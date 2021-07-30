@@ -18,11 +18,12 @@ public:
 	float whiteSpace;
 	vector<vector<UIButton>> buttons;
 
-	UIInventoryPanel(Vector2f position_, Vector2f size_, Border border, String text_, vector<string> maps_, int tileSetId_, float headerHeight, float whiteSpace_, bool draggable_) : UIPanel(position_, size_, border, text_, headerHeight, draggable_)
+	UIInventoryPanel(Vector2f position_, Vector2f size_, Border border, String text_, int tileSetId_, float headerHeight, float whiteSpace_, bool draggable_) : UIPanel(position_, size_, border, text_, headerHeight, draggable_)
 	{
 		whiteSpace = whiteSpace_;
 		tileSetId = tileSetId_;
-		buttonsCount = storage.getTexturesFromImage(textures, storage.loadImage(maps_[tileSetId_]));
+		cout << "UIInventoryPanel\n";
+		buttonsCount = storage.getTexturesFromImage(textures, storage.loadImage(storage.maps[tileSetId_]));
 		size = Vector2f(buttonsCount.x * TILE_SIZE + buttonsCount.x * whiteSpace + whiteSpace, buttonsCount.y * TILE_SIZE + headerHeight + buttonsCount.y * whiteSpace + whiteSpace);
 		mainRect.setSize(size);
 		headerRect.setSize(Vector2f(size.x, headerHeight));

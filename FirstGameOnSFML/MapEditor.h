@@ -2,9 +2,6 @@
 #include "Storage.h"
 #include "UIContainer.h"
 #include "UIInventoryPanel.h"
-#include <boost/filesystem.hpp>
-#include <iterator>
-#include <set>
 
 
 class TileInfo
@@ -46,7 +43,6 @@ private:
 
 	vector<vector<TileInfo>> tileMap;
 	vector<Texture**> textures;
-	vector<string> maps;
 
 	Vector2f mouseCoords = Vector2f(0, 0);
 	Vector2f oldMouseCoords = Vector2f(0, 0);
@@ -63,18 +59,10 @@ public:
 	{
 		getTileMaps();
 		createTileMap();
-		for (int i = 0; i < maps.size(); i++)
+		for (int i = 0; i < storage.maps.size(); i++)
 		{
-			container.buttons.push_back(UIButton(Vector2f(WIDTH, 60 * i), Vector2f(150, 60), Border::Thin, to_string(i), ButtonEvent::SetTileSet, false));
+			container.buttons.push_back(UIButton(Vector2f(WIDTH, 60 * i), Vector2f(60, 60), Border::Thin, to_string(i), ButtonEvent::SetTileSet, false));
 		}
-	}
-
-	set<boost::filesystem::path> getDirContents(const string& dirName)
-	{
-		set<boost::filesystem::path> paths;
-		copy(boost::filesystem::directory_iterator(dirName), boost::filesystem::directory_iterator(), inserter(paths, paths.end()));
-
-		return paths;
 	}
 
 	void createWindow()
@@ -118,21 +106,16 @@ public:
 		}
 	}
 
-	vector<string> getTileMaps()
+	
+
+	void getTileMaps()
 	{
-		set<boost::filesystem::path> paths = getDirContents("Images\\");
-		
-		for (boost::filesystem::path path : paths)
-		{
-			maps.push_back(path.string());
-		}
-		for (int i = 0; i < maps.size(); i++)
+		for (int i = 0; i < storage.maps.size(); i++)
 		{
 			Texture** texture;
 			textures.push_back(texture);
-			storage.getTexturesFromImage(textures[i], storage.loadImage(maps[i]));
+			storage.getTexturesFromImage(textures[i], storage.loadImage(storage.maps[i]));
 		}
-		return maps;
 	}
 
 
@@ -186,7 +169,8 @@ public:
 				}
 				else if (event.type == Event::MouseButtonPressed)
 				{
-					if (container.buttonsClickHandler(event, mouseCoords, chosenTexture, chosenTileSetId, maps)) {}
+					if (container.buttonsClickHandler(mouseCoords)) {}
+					else if (container.inventoryButtonsClickHandler(mouseCoords, chosenTexture, chosenTileSetId)) {}
 					else
 					{
 						if (event.mouseButton.button == Mouse::Left) leftMousePressed = true;

@@ -3,6 +3,12 @@
 
 Storage::Storage()
 {
+	set<boost::filesystem::path> paths = getDirContents("Images\\");
+
+	for (boost::filesystem::path path : paths)
+	{
+		maps.push_back(path.string());
+	}
 	font.loadFromFile("Fonts\\PixelFont.ttf");
 };
 
@@ -17,6 +23,14 @@ bool Storage::checkCollision(Vector2f obj1, Vector2f obj1Size, Vector2f obj2, Ve
 Vector2f Storage::getLocalCoords(Vector2f obj1, Vector2f obj1Size, Vector2f obj2, Vector2f obj2Size)
 {
 	return Vector2f(0,0);
+}
+
+set<boost::filesystem::path> Storage::getDirContents(const string& dirName)
+{
+	set<boost::filesystem::path> paths;
+	copy(boost::filesystem::directory_iterator(dirName), boost::filesystem::directory_iterator(), inserter(paths, paths.end()));
+
+	return paths;
 }
 
 

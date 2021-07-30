@@ -4,6 +4,9 @@
 #include <iostream>
 #include <fstream>
 #include <functional>
+#include <boost/filesystem.hpp>
+#include <iterator>
+#include <set>
 
 #define arraySize(a) (sizeof(a)/sizeof((a)[0]))
 
@@ -22,6 +25,7 @@ class Storage
 {
 public:
 	Font font;
+	vector<string> maps;
 	
 	Storage();
 
@@ -31,4 +35,5 @@ public:
 	void showText(RenderWindow& window, string txt, Vector2f position, int fontSize, Color color);
 	Vector2f getTexturesFromImage(Texture**& textures, Image image);
 	float lerp(float a, float b, float f);
+	set<boost::filesystem::path> getDirContents(const string& dirName);
 };
