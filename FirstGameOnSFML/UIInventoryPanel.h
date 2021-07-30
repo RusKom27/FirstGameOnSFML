@@ -13,14 +13,16 @@ class UIInventoryPanel : public UIPanel
 {
 public:
 	Texture** textures;
+	int tileSetId;
 	Vector2f buttonsCount;
 	float whiteSpace;
 	vector<vector<UIButton>> buttons;
 
-	UIInventoryPanel(Vector2f position_, Vector2f size_, Border border, String text_, float headerHeight, float whiteSpace_, bool draggable_) : UIPanel(position_, size_, border, text_, headerHeight, draggable_)
+	UIInventoryPanel(Vector2f position_, Vector2f size_, Border border, String text_, vector<string> maps_, int tileSetId_, float headerHeight, float whiteSpace_, bool draggable_) : UIPanel(position_, size_, border, text_, headerHeight, draggable_)
 	{
 		whiteSpace = whiteSpace_;
-		buttonsCount = storage.getTexturesFromImage(textures, storage.loadImage(text.getString()));
+		tileSetId = tileSetId_;
+		buttonsCount = storage.getTexturesFromImage(textures, storage.loadImage(maps_[tileSetId_]));
 		size = Vector2f(buttonsCount.x * TILE_SIZE + buttonsCount.x * whiteSpace + whiteSpace, buttonsCount.y * TILE_SIZE + headerHeight + buttonsCount.y * whiteSpace + whiteSpace);
 		mainRect.setSize(size);
 		headerRect.setSize(Vector2f(size.x, headerHeight));
@@ -45,7 +47,7 @@ public:
 		closeButton.setPosition(Vector2f(position.x + size.x - closeButton.size.x - 10, position.y + 10));
 	}
 
-	void eventHandle(Vector2f mouseCoords, Vector2f& chosenTexture, string& chosenTileSet)
+	bool eventHandle(Vector2f mouseCoords, Vector2f& chosenTexture, int& chosenTileSet)
 	{
 		if (closeButton.click(mouseCoords))
 		{
@@ -57,6 +59,7 @@ public:
 			default:
 				break;
 			}
+			return true;
 		}
 		for (int i = 0; i < buttons.size(); i++)
 		{
@@ -68,14 +71,16 @@ public:
 					{
 					case ButtonEvent::SetTexture:
 						chosenTexture = Vector2f(i,j);
-						chosenTileSet = text.getString();
+						chosenTileSet = tileSetId;
 						break;
 					default:
 						break;
 					}
+					return true;
 				}
 			}
 		}
+		return false;
 	}
 
 	void update(Vector2f mouseCoords)

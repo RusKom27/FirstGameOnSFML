@@ -19,7 +19,7 @@ public:
 
 	UIContainer() {}
 
-	void buttonsClickHandler(Event event, Vector2f mouseCoords, Vector2f& chosenTexture, string& chosenTileSet)
+	bool buttonsClickHandler(Event event, Vector2f mouseCoords, Vector2f& chosenTexture, int& chosenTileSet, vector<string> maps)
 	{
 		for (UIPanel& panel : panels)
 		{
@@ -27,23 +27,25 @@ public:
 		}
 		for (UIInventoryPanel& inventoryPanel : inventoryPanels)
 		{
-			inventoryPanel.eventHandle(mouseCoords, chosenTexture, chosenTileSet);
+			if (inventoryPanel.eventHandle(mouseCoords, chosenTexture, chosenTileSet)) return true;
 		}
 
-		for (UIButton& button : buttons)
+		for (int i = 0; i < buttons.size(); i++)
 		{
-			if (button.click(mouseCoords))
+			if (buttons[i].click(mouseCoords))
 			{
-				switch (button.buttonEvent)
+				switch (buttons[i].buttonEvent)
 				{
 				case ButtonEvent::SetTileSet:
-					cout << "Click\n";
+					inventoryPanels.push_back(UIInventoryPanel(Vector2f(10, 10), Vector2f(200, 600), Border::Thin, maps[i], maps, i, 50, 10, true));
 					break;
 				default:
 					break;
 				}
+				return true;
 			}
 		}
+		return false;
 	}
 
 	bool movePanels(Vector2f mouseCoords, Vector2f oldMouseCoords, bool leftMouse, bool rightMouse)
@@ -53,7 +55,9 @@ public:
 			if (panel.contains(mouseCoords))
 			{
 				if (leftMouse)
+				{
 					panel.move(mouseCoords, oldMouseCoords);
+				}
 				return true;
 			}
 		}
@@ -62,7 +66,9 @@ public:
 			if (inventoryPanel.contains(mouseCoords))
 			{
 				if (leftMouse)
+				{
 					inventoryPanel.move(mouseCoords, oldMouseCoords);
+				}
 				return true;
 			}
 		}

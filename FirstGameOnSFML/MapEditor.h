@@ -1,6 +1,5 @@
 #pragma once
 #include "Storage.h"
-#include "GameMap.h"
 #include "UIContainer.h"
 #include "UIInventoryPanel.h"
 #include <boost/filesystem.hpp>
@@ -11,29 +10,30 @@
 class TileInfo
 {
 public:
-	string path;
+	int tileSetId;
 	Vector2f position;
 	Sprite frontSprite;
 	Vector2f frontTextureCoord;
 	Sprite backSprite;
 	Vector2f backTextureCoord;
-	Texture** textures;
+	Texture** frontTextures;
+	Texture** backTextures;
 
-	TileInfo(string path_, Vector2f position_, Vector2f frontTextureCoord_, Vector2f backTextureCoord_, Texture** textures_)
+	TileInfo( Vector2f position_, Vector2f frontTextureCoord_, Vector2f backTextureCoord_, Texture** textures_)
 	{
-		path = path_;
 		position = position_;
 		frontTextureCoord = frontTextureCoord_;
 		backTextureCoord = backTextureCoord_;
 		frontSprite.setPosition(position);
 		backSprite.setPosition(position);
-		textures = textures_;
+		frontTextures = textures_;
+		backTextures = textures_;
 	}
 
 	void update()
 	{
-		frontSprite.setTexture(textures[static_cast<int>(frontTextureCoord.x)][static_cast<int>(frontTextureCoord.y)]);
-		backSprite.setTexture(textures[static_cast<int>(backTextureCoord.x)][static_cast<int>(backTextureCoord.y)]);
+		frontSprite.setTexture(frontTextures[static_cast<int>(frontTextureCoord.x)][static_cast<int>(frontTextureCoord.y)]);
+		backSprite.setTexture(backTextures[static_cast<int>(backTextureCoord.x)][static_cast<int>(backTextureCoord.y)]);
 	}
 };
 
@@ -41,22 +41,33 @@ class MapEditor
 {
 private:
 	View view;
-	vector<vector<TileInfo>> tileMap;
-	//GameMap* map;
+	UIContainer container;
 	Storage storage;
+
+	vector<vector<TileInfo>> tileMap;
 	vector<Texture**> textures;
+	vector<string> maps;
+
 	Vector2f mouseCoords = Vector2f(0, 0);
 	Vector2f oldMouseCoords = Vector2f(0, 0);
 	bool leftMousePressed = false;
 	bool rightMousePressed = false;
 	bool drawCollisions = false;
-	vector<string> maps;
 	Vector2f chosenTexture;
-	string chosenTileSet;
-	UIContainer container;
-
+	int chosenTileSetId;
+	
 public:
 	RenderWindow* window;
+
+	MapEditor() 
+	{
+		getTileMaps();
+		createTileMap();
+		for (int i = 0; i < maps.size(); i++)
+		{
+			container.buttons.push_back(UIButton(Vector2f(WIDTH, 60 * i), Vector2f(150, 60), Border::Thin, to_string(i), ButtonEvent::SetTileSet, false));
+		}
+	}
 
 	set<boost::filesystem::path> getDirContents(const string& dirName)
 	{
@@ -64,22 +75,6 @@ public:
 		copy(boost::filesystem::directory_iterator(dirName), boost::filesystem::directory_iterator(), inserter(paths, paths.end()));
 
 		return paths;
-	}
-
-	MapEditor() 
-	{
-		//map = new GameMap();
-		//map->buildEmptyMap();
-
-
-		maps = getTileMaps();
-		createTileMap();
-		for (int i = 0; i < maps.size(); i++)
-		{
-			container.buttons.push_back(UIButton(Vector2f(WIDTH, 60 * i), Vector2f(150, 60), Border::Thin, to_string(i), ButtonEvent::None, false));
-		}
-		UIInventoryPanel inventory = UIInventoryPanel(Vector2f(10, 10), Vector2f(200, 600), Border::Thin, maps[1], 50, 10, true);
-		container.inventoryPanels.push_back(inventory);
 	}
 
 	void createWindow()
@@ -105,10 +100,7 @@ public:
 			for (int j = 0; j < TILES_COUNT_Y; j++)
 			{
 				y = j * TILE_SIZE;
-
-				tileMap[i].push_back(TileInfo(maps[1],Vector2f(x,y), Vector2f(1,1), Vector2f(1,1), textures[1]));
-				tileMap[i][j].backSprite.setTexture(textures[1][1][1]);
-				tileMap[i][j].frontSprite.setTexture(textures[1][1][1]);
+				tileMap[i].push_back(TileInfo(Vector2f(x,y), Vector2f(3,1), Vector2f(1,1), textures[0]));
 			}
 		}
 	}
@@ -148,20 +140,23 @@ public:
 	{
 		int x = static_cast<int>(mouseCoords.x) / TILE_SIZE;
 		int y = static_cast<int>(mouseCoords.y) / TILE_SIZE;
-		if (rightMousePressed)
+		
+		if (x >= 0 && x < TILES_COUNT_X && y >= 0 && y < TILES_COUNT_Y)
 		{
-			tileMap[x][y].backTextureCoord = chosenTexture;
-			tileMap[x][y].path = chosenTileSet;
+			if (rightMousePressed)
+			{
+				tileMap[x][y].backTextures = textures[chosenTileSetId];
+				tileMap[x][y].backTextureCoord = chosenTexture;
+				tileMap[x][y].tileSetId = chosenTileSetId;
+			}
+			if (leftMousePressed)
+			{
+				tileMap[x][y].frontTextures = textures[chosenTileSetId];
+				tileMap[x][y].frontTextureCoord = chosenTexture;
+				tileMap[x][y].tileSetId = chosenTileSetId;
+			}
 		}
-			
-			//map->tiles[x][y].backSprite.setTexture(chosenTexture);
-		if (leftMousePressed)
-		{
-			tileMap[x][y].frontTextureCoord = chosenTexture;
-			tileMap[x][y].path = chosenTileSet;
-		}
-			
-			//map->tiles[x][y].frontSprite.setTexture(chosenTexture);
+		
 	}
 
 	void update(float time)
@@ -191,9 +186,13 @@ public:
 				}
 				else if (event.type == Event::MouseButtonPressed)
 				{
-					container.buttonsClickHandler(event, mouseCoords, chosenTexture, chosenTileSet);
-					if (event.mouseButton.button == Mouse::Left) leftMousePressed = true;
-					if (event.mouseButton.button == Mouse::Right) rightMousePressed = true;
+					if (container.buttonsClickHandler(event, mouseCoords, chosenTexture, chosenTileSetId, maps)) {}
+					else
+					{
+						if (event.mouseButton.button == Mouse::Left) leftMousePressed = true;
+						if (event.mouseButton.button == Mouse::Right) rightMousePressed = true;
+					}
+					
 				}
 				else if (event.type == Event::MouseButtonReleased)
 				{
