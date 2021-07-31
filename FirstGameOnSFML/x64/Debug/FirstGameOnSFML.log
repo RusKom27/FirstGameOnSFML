@@ -9,47 +9,19 @@ C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\UIInventoryPanel.h(
           [
               T=float
           ]
-C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\MapEditor.h(64,60): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\MapEditor.cpp(27,59): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
           with
           [
               T=float
           ]
-C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\MapEditor.h(92,46): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\MapEditor.cpp(54,46): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
           with
           [
               T=float
           ]
-C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\MapEditor.h(92,44): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\MapEditor.cpp(54,43): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
           with
           [
               T=float
           ]
-  main.cpp
-C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\UIInventoryPanel.h(74,34): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
-          with
-          [
-              T=float
-          ]
-C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\UIInventoryPanel.h(74,32): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
-          with
-          [
-              T=float
-          ]
-C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\MapEditor.h(64,60): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
-          with
-          [
-              T=float
-          ]
-C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\MapEditor.h(92,46): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
-          with
-          [
-              T=float
-          ]
-C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\MapEditor.h(92,44): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
-          with
-          [
-              T=float
-          ]
-C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\main.cpp(75,61): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\main.cpp(75,31): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
   FirstGameOnSFML.vcxproj -> C:\Users\RusKom\source\repos\FirstGameOnSFML\x64\Debug\FirstGameOnSFML.exe

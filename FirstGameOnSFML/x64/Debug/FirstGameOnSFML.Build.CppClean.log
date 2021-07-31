@@ -2,6 +2,7 @@ c:\users\ruskom\source\repos\firstgameonsfml\firstgameonsfml\x64\debug\vc142.pdb
 c:\users\ruskom\source\repos\firstgameonsfml\firstgameonsfml\x64\debug\vc142.idb
 c:\users\ruskom\source\repos\firstgameonsfml\firstgameonsfml\x64\debug\uipanel.obj
 c:\users\ruskom\source\repos\firstgameonsfml\firstgameonsfml\x64\debug\uielement.obj
+c:\users\ruskom\source\repos\firstgameonsfml\firstgameonsfml\x64\debug\uibutton.obj
 c:\users\ruskom\source\repos\firstgameonsfml\firstgameonsfml\x64\debug\tinyxml2.obj
 c:\users\ruskom\source\repos\firstgameonsfml\firstgameonsfml\x64\debug\tile.obj
 c:\users\ruskom\source\repos\firstgameonsfml\firstgameonsfml\x64\debug\gamemap.obj
@@ -11,12 +12,11 @@ c:\users\ruskom\source\repos\firstgameonsfml\firstgameonsfml\x64\debug\mapeditor
 c:\users\ruskom\source\repos\firstgameonsfml\firstgameonsfml\x64\debug\entity.obj
 c:\users\ruskom\source\repos\firstgameonsfml\firstgameonsfml\x64\debug\debug.obj
 c:\users\ruskom\source\repos\firstgameonsfml\firstgameonsfml\x64\debug\animator.obj
+c:\users\ruskom\source\repos\firstgameonsfml\firstgameonsfml\x64\debug\uiinventorypanel.obj
+c:\users\ruskom\source\repos\firstgameonsfml\firstgameonsfml\x64\debug\uicontainer.obj
 c:\users\ruskom\source\repos\firstgameonsfml\firstgameonsfml\x64\debug\textfield.obj
 c:\users\ruskom\source\repos\firstgameonsfml\firstgameonsfml\x64\debug\main.obj
 c:\users\ruskom\source\repos\firstgameonsfml\firstgameonsfml\x64\debug\enemy.obj
-c:\users\ruskom\source\repos\firstgameonsfml\firstgameonsfml\x64\debug\uibutton.obj
-c:\users\ruskom\source\repos\firstgameonsfml\firstgameonsfml\x64\debug\uicontainer.obj
-c:\users\ruskom\source\repos\firstgameonsfml\firstgameonsfml\x64\debug\uiinventorypanel.obj
 c:\users\ruskom\source\repos\firstgameonsfml\x64\debug\firstgameonsfml.exe
 c:\users\ruskom\source\repos\firstgameonsfml\x64\debug\firstgameonsfml.ilk
 c:\users\ruskom\source\repos\firstgameonsfml\x64\debug\firstgameonsfml.pdb

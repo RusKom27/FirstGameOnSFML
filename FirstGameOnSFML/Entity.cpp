@@ -53,4 +53,5 @@ bool Entity::checkNearbyTiles(vector<Vector2i> coords, Vector2i axis)
 			return true;
 		}
 	}
+	return false;
 }

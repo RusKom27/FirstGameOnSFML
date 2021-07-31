@@ -4,6 +4,7 @@
 #include <iostream>
 #include <fstream>
 #include <functional>
+#include "tinyxml2.h"
 #include <boost/filesystem.hpp>
 #include <iterator>
 #include <set>
@@ -12,6 +13,7 @@
 
 using namespace sf;
 using namespace std;
+using namespace tinyxml2;
 
 
 const int WIDTH = 1200;

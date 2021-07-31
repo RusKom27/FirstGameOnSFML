@@ -3,13 +3,8 @@
 #include <iostream>
 #include "Tile.h"
 #include "Storage.h"
-#include "tinyxml2.h"
 #include "Enemy.h"
 #include "Player.h"
-
-using namespace sf;
-using namespace std;
-using namespace tinyxml2;
 
 class GameMap
 {
