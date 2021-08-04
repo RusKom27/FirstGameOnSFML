@@ -9,19 +9,64 @@ C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\UIInventoryPanel.h(
           [
               T=float
           ]
-C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\MapEditor.cpp(27,59): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\UIContainer.h(52,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\UIContainer.h(61,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\UIContainer.h(72,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\MapEditor.cpp(27,66): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
           with
           [
               T=float
           ]
-C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\MapEditor.cpp(54,46): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\MapEditor.cpp(58,46): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
           with
           [
               T=float
           ]
-C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\MapEditor.cpp(54,43): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\MapEditor.cpp(58,43): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
           with
           [
               T=float
           ]
+  UIContainer.cpp
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\UIInventoryPanel.h(74,34): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\UIInventoryPanel.h(74,32): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\UIContainer.h(52,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\UIContainer.h(61,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\UIContainer.h(72,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+  UIInventoryPanel.cpp
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\UIInventoryPanel.h(74,34): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\UIInventoryPanel.h(74,32): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+  main.cpp
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\UIInventoryPanel.h(74,34): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\UIInventoryPanel.h(74,32): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\UIContainer.h(52,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\UIContainer.h(61,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\UIContainer.h(72,1): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\main.cpp(72,61): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\RusKom\source\repos\FirstGameOnSFML\FirstGameOnSFML\main.cpp(72,31): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+  Создание кода...
   FirstGameOnSFML.vcxproj -> C:\Users\RusKom\source\repos\FirstGameOnSFML\x64\Debug\FirstGameOnSFML.exe

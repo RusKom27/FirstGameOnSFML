@@ -66,6 +66,9 @@
     <ClCompile Include="UIInventoryPanel.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="UIRadioButton.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Storage.h">
@@ -117,6 +120,9 @@
       <Filter>Исходные файлы</Filter>
     </ClInclude>
     <ClInclude Include="UIInventoryPanel.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="UIRadioButton.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

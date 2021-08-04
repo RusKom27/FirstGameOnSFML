@@ -28,6 +28,7 @@ class Storage
 public:
 	Font font;
 	vector<string> maps;
+
 	
 	Storage();
 

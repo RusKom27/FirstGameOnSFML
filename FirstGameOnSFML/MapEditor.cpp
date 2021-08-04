@@ -24,8 +24,12 @@ MapEditor::MapEditor()
 	createTileMap();
 	for (int i = 0; i < storage.maps.size(); i++)
 	{
-		container.buttons.push_back(UIButton(Vector2f(WIDTH, 60 * i), Vector2f(60, 60), Border::Thin, to_string(i), ButtonEvent::SetTileSet, false));
+		container.buttons.push_back(UIButton(Vector2f(WIDTH, TILE_SIZE * i), Vector2f(TILE_SIZE, TILE_SIZE), Border::Thin, to_string(i), ButtonEvent::SetTileSet, false));
 	}
+	container.uiElements.push_back(UIPanel(Vector2f(WIDTH, 7 * TILE_SIZE), Vector2f(TILE_SIZE * 3, TILE_SIZE * 2), Border::Thin, "Front", TILE_SIZE, false));
+	container.uiElements.push_back(UIPanel(Vector2f(WIDTH, 9 * TILE_SIZE), Vector2f(TILE_SIZE * 3, TILE_SIZE * 2), Border::Thin, "Back", TILE_SIZE, false));
+	container.uiElements.push_back(UIPanel(Vector2f(WIDTH, 11 * TILE_SIZE), Vector2f(TILE_SIZE * 3, TILE_SIZE * 2), Border::Thin, "Walls", TILE_SIZE, false));
+	container.buttons.push_back(UIButton(Vector2f(WIDTH, 13 * TILE_SIZE), Vector2f(TILE_SIZE * 3, TILE_SIZE), Border::Thin, "Save", ButtonEvent::SetTileSet, false));
 }
 
 void MapEditor::createWindow()
@@ -143,11 +147,9 @@ void MapEditor::update(float time)
 			{
 				if (container.buttonsClickHandler(mouseCoords)) {}
 				else if (container.inventoryButtonsClickHandler(mouseCoords, chosenTexture, chosenTileSetId)) {}
-				else
-				{
-					if (event.mouseButton.button == Mouse::Left) leftMousePressed = true;
-					if (event.mouseButton.button == Mouse::Right) rightMousePressed = true;
-				}
+				
+				if (event.mouseButton.button == Mouse::Left) leftMousePressed = true;
+				if (event.mouseButton.button == Mouse::Right) rightMousePressed = true;
 			}
 			else if (event.type == Event::MouseButtonReleased)
 			{

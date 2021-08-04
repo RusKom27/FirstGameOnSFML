@@ -16,6 +16,7 @@ private:
 	Storage storage;
 public:
 	vector<UIButton> buttons;
+	vector<UIElement> uiElements;
 	vector<UIPanel> panels;
 	vector<UIInventoryPanel> inventoryPanels;
 
@@ -48,33 +49,33 @@ public:
 
 	bool inventoryButtonsClickHandler(Vector2f mouseCoords, Vector2f& chosenTexture, int& chosenTileSet)
 	{
-		for (UIInventoryPanel& inventoryPanel : inventoryPanels)
+		for (int i = inventoryPanels.size() - 1; i >= 0; i--)
 		{
-			if (inventoryPanel.eventHandle(mouseCoords, chosenTexture, chosenTileSet)) return true;
+			if (inventoryPanels[i].eventHandle(mouseCoords, chosenTexture, chosenTileSet)) return true;
 		}
 		return false;
 	}
 
 	bool movePanels(Vector2f mouseCoords, Vector2f oldMouseCoords, bool leftMouse, bool rightMouse)
 	{
-		for (UIPanel& panel : panels)
+		for (int i = panels.size() - 1; i >= 0; i--)
 		{
-			if (panel.contains(mouseCoords))
+			if (panels[i].contains(mouseCoords))
 			{
 				if (leftMouse)
 				{
-					panel.move(mouseCoords, oldMouseCoords);
+					panels[i].move(mouseCoords, oldMouseCoords);
 				}
 				return true;
 			}
 		}
-		for (UIInventoryPanel& inventoryPanel : inventoryPanels)
+		for (int i = inventoryPanels.size() - 1; i >= 0; i--)
 		{
-			if (inventoryPanel.contains(mouseCoords))
+			if (inventoryPanels[i].contains(mouseCoords))
 			{
 				if (leftMouse)
 				{
-					inventoryPanel.move(mouseCoords, oldMouseCoords);
+					inventoryPanels[i].move(mouseCoords, oldMouseCoords);
 				}
 				return true;
 			}
@@ -104,13 +105,17 @@ public:
 
 	void draw(RenderWindow& window)
 	{
-		for (UIButton& button : buttons)
+		for (UIElement& uiElement : uiElements)
 		{
-			button.draw(window);
+			uiElement.draw(window);
 		}
 		for (UIPanel& panel : panels)
 		{
 			panel.draw(window);
+		}
+		for (UIButton& button : buttons)
+		{
+			button.draw(window);
 		}
 		for (UIInventoryPanel& inventoryPanel : inventoryPanels)
 		{

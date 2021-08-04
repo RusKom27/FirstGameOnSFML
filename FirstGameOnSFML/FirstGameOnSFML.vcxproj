@@ -64,6 +64,7 @@
     <ClCompile Include="UIPanel.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="UIRadioButton.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animator.h">
@@ -111,6 +112,7 @@
     <ClInclude Include="UIPanel.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="UIRadioButton.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
